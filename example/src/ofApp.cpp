@@ -1,10 +1,4 @@
-/* This is an example of how to integrate maximilain into openFrameworks,
- including using audio received for input and audio requested for output.
- 
- 
- You can copy and paste this and use it as a starting example.
- 
- */
+// Based on Maximillian integration example, see https://github.com/micknoise/Maximilian/tree/master/openFrameworks
 
 #include "ofApp.h"
 
@@ -12,76 +6,58 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    /* This is stuff you always need.*/
-    
+    //housekeeping
     ofSetFrameRate(60);
-    
-    sampleRate 	= 44100; /* Sampling Rate */
-    bufferSize	= 512; /* Buffer Size. you have to fill this buffer with sound using the for loop in the audioOut method */
-    
-    
-    ofxMaxiSettings::setup(sampleRate, 2, bufferSize);
-    
     ofSetVerticalSync(true);
     ofEnableAlphaBlending();
     ofEnableSmoothing();
-    
-    /* Anything that you would normally find/put in maximilian's setup() method needs to go here. For example, Sample loading.
-     */
-    
-    mySample.load(ofToDataPath("sound.wav"));
-    
     ofBackground(0,0,0);
     
+    //Maximillian setup
+    sampleRate 	= 44100; /* Sampling Rate */
+    bufferSize	= 512; /* Buffer Size. you have to fill this buffer with sound using the for loop in the audioOut method */
+    ofxMaxiSettings::setup(sampleRate, 2, bufferSize);
     
+    //ofxAVUI setup
+    zones[0].setup(100, 100, 200, 50, "sound.wav");
+    zones[1].setup(100, 300, 300, 10, "Low.wav");
+    zones[2].setup(200, 200, 50, 50, "synth.wav");
+
+    //OF sound start
     ofSoundStreamSetup(2,2,this, sampleRate, bufferSize, 4); /* this has to happen at the end of setup - it switches on the DAC */
-    
     
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     
-    
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    /* You can use any of the data from audio received and audiorequested to draw stuff here.
-     
-     */
+    for (int k=0; k<3; k++) {
+        zones[k].draw();
+    }
     
-    
+    /* You can use any of the data from audio received and audiorequested to draw stuff here. */
+
 }
 
 //--------------------------------------------------------------
 void ofApp::audioOut(float * output, int bufferSize, int nChannels) {
     
-    
     for (int i = 0; i < bufferSize; i++){
         
-        /* Stick your maximilian 'play()' code in here ! Declare your objects in testApp.h.
-         
-         For information on how maximilian works, take a look at the example code at
-         
-         http://www.maximilian.strangeloop.co.uk
-         
-         under 'Tutorials'.
-         
-         */
-        
-        //make 'wave' equal something noisy
-        
-        double wave = mySample.play(0.5);
+        output[i*nChannels    ] = 0;
+        output[i*nChannels + 1] = 0;
 
-        
-        output[i*nChannels    ] = wave; /* You may end up with lots of outputs. add them here */
-        output[i*nChannels + 1] = wave;
-        
+        for (int k=0; k<3; k++) {
+            zones[k].play(i);
+            output[i*nChannels    ] += zones[k].getOutput(0);
+            output[i*nChannels + 1] += zones[k].getOutput(1);
+        }
     }
-    
-    
 }
 
 //--------------------------------------------------------------
@@ -89,7 +65,6 @@ void ofApp::audioIn(float * input, int bufferSize, int nChannels){
     
     for(int i = 0; i < bufferSize; i++){
         /* you can also grab the data out of the arrays*/
-        
     }
     
 }

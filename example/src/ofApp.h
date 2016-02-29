@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxMaxim.h"
+#include "ofxAVUI.h"
 
 class ofApp : public ofBaseApp{
 
@@ -40,5 +41,8 @@ class ofApp : public ofBaseApp{
     int		bufferSize; /* buffer size */
     int		sampleRate;
 		
-    maxiSample mySample;
+//    maxiSample mySample;
+    
+    ofxAVUIZone zones[3];
+    
 };

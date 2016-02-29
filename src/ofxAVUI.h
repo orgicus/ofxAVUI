@@ -1,5 +1,3 @@
 #pragma once
 
-#include "ofxZone.h"
-
-void ofxAVUISetZone();
+#include "ofxAVUIZone.h"
