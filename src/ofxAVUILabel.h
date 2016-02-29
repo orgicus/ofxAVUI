@@ -13,11 +13,17 @@
 
 
 class ofxAVUILabel : public ofxAVUIBase {
-	public:
-		ofxAVUILabel();
-		virtual ~ofxAVUILabel();
+public:
+    ofxAVUILabel();
+    virtual ~ofxAVUILabel();
 
-		void draw();
+    bool mouseMoved(ofMouseEventArgs & args);
+    bool mousePressed(ofMouseEventArgs & args);
+    bool mouseDragged(ofMouseEventArgs & args);
+    bool mouseReleased(ofMouseEventArgs & args);
+    bool mouseScrolled(ofMouseEventArgs & args);
+
+    void draw();
 
 };
 

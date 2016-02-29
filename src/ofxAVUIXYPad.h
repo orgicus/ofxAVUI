@@ -13,12 +13,21 @@
 
 
 class ofxAVUIXYPad : public ofxAVUIBase {
-	public:
-		ofxAVUIXYPad();
-		virtual ~ofxAVUIXYPad();
+public:
+    ofxAVUIXYPad();
+    ~ofxAVUIXYPad();
 
-		void draw();
+    bool mouseMoved(ofMouseEventArgs & args);
+    bool mousePressed(ofMouseEventArgs & args);
+    bool mouseDragged(ofMouseEventArgs & args);
+    bool mouseReleased(ofMouseEventArgs & args);
+    bool mouseScrolled(ofMouseEventArgs & args);
 
+    void draw();
+
+private:
+    ofRectangle location;
+    
 };
 
 #endif /* ofxAVUIXYPad_h */

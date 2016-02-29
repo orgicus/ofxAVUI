@@ -18,6 +18,21 @@ ofxAVUIButton::~ofxAVUIButton(){
 void ofxAVUIButton::draw(){
     ofPushStyle();
     ofSetColor(255, 0, 0);
-    ofDrawRectangle(x, y, width, height);
+    ofDrawRectangle(shape);
     ofPopStyle();
+}
+
+bool ofxAVUIButton::mouseMoved(ofMouseEventArgs & args) {
+}
+
+bool ofxAVUIButton::mousePressed(ofMouseEventArgs & args) {
+}
+
+bool ofxAVUIButton::mouseDragged(ofMouseEventArgs & args) {
+}
+
+bool ofxAVUIButton::mouseReleased(ofMouseEventArgs & args) {
+}
+
+bool ofxAVUIButton::mouseScrolled(ofMouseEventArgs & args) {
 }

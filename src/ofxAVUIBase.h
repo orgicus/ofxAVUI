@@ -18,9 +18,16 @@ public:
     void setPosition(int _x, int _y, int _width, int _height);
     virtual void draw() = 0;
 
+    virtual bool mouseMoved(ofMouseEventArgs & args) = 0;
+    virtual bool mousePressed(ofMouseEventArgs & args) = 0;
+    virtual bool mouseDragged(ofMouseEventArgs & args) = 0;
+    virtual bool mouseReleased(ofMouseEventArgs & args) = 0;
+    virtual bool mouseScrolled(ofMouseEventArgs & args) = 0;
+    virtual void mouseEntered(ofMouseEventArgs & args) {}
+    virtual void mouseExited(ofMouseEventArgs & args) {}
+
 protected:
-    int         x, y;
-    int         width, height;
+    ofRectangle shape;
 };
 
 #endif /* ofxAVUIBase_h */

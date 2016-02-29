@@ -18,6 +18,21 @@ ofxAVUISlider::~ofxAVUISlider(){
 void ofxAVUISlider::draw(){
     ofPushStyle();
     ofSetColor(255, 255, 0);
-    ofDrawRectangle(x, y, width, height);
+    ofDrawRectangle(shape);
     ofPopStyle();
+}
+
+bool ofxAVUISlider::mouseMoved(ofMouseEventArgs & args) {
+}
+
+bool ofxAVUISlider::mousePressed(ofMouseEventArgs & args) {
+}
+
+bool ofxAVUISlider::mouseDragged(ofMouseEventArgs & args) {
+}
+
+bool ofxAVUISlider::mouseReleased(ofMouseEventArgs & args) {
+}
+
+bool ofxAVUISlider::mouseScrolled(ofMouseEventArgs & args) {
 }

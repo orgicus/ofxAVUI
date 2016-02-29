@@ -10,7 +10,6 @@
 
 #include "ofMain.h"
 #include "ofxMaxim.h"
-#include "ofxAVUIConstants.h"
 #include "ofxAVUIBase.h"
 #include "ofxAVUIXYPad.h"
 #include "ofxAVUIButton.h"

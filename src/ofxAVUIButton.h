@@ -13,11 +13,17 @@
 
 
 class ofxAVUIButton : public ofxAVUIBase {
-	public:
-		ofxAVUIButton();
-		virtual ~ofxAVUIButton();
+public:
+    ofxAVUIButton();
+    virtual ~ofxAVUIButton();
+    
+    bool mouseMoved(ofMouseEventArgs & args);
+    bool mousePressed(ofMouseEventArgs & args);
+    bool mouseDragged(ofMouseEventArgs & args);
+    bool mouseReleased(ofMouseEventArgs & args);
+    bool mouseScrolled(ofMouseEventArgs & args);
 
-		void draw();
+    void draw();
 
 };
 

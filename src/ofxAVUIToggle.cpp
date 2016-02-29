@@ -18,6 +18,21 @@ ofxAVUIToggle::~ofxAVUIToggle(){
 void ofxAVUIToggle::draw(){
     ofPushStyle();
     ofSetColor(0, 0, 255);
-    ofDrawRectangle(x, y, width, height);
+    ofDrawRectangle(shape);
     ofPopStyle();
+}
+
+bool ofxAVUIToggle::mouseMoved(ofMouseEventArgs & args) {
+}
+
+bool ofxAVUIToggle::mousePressed(ofMouseEventArgs & args) {
+}
+
+bool ofxAVUIToggle::mouseDragged(ofMouseEventArgs & args) {
+}
+
+bool ofxAVUIToggle::mouseReleased(ofMouseEventArgs & args) {
+}
+
+bool ofxAVUIToggle::mouseScrolled(ofMouseEventArgs & args) {
 }
