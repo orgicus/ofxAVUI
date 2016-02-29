@@ -19,10 +19,17 @@ void ofApp::setup(){
     ofxMaxiSettings::setup(sampleRate, 2, bufferSize);
     
     //ofxAVUI setup
-    zones[0].setup(100, 100, 200, 50, "sound.wav");
-    zones[1].setup(100, 300, 300, 10, "Low.wav");
-    zones[2].setup(200, 200, 50, 50, "synth.wav");
-
+    zones[0].setup(100, 100, 200, 300, "sound.wav");
+    zones[0].addUI(new ofxAVUIXYPad(), 0.0, 0.33);
+    zones[0].addUI(new ofxAVUIToggle(), 0.33, 0.33);
+    zones[0].addUI(new ofxAVUIButton(), 0.66, 0.34);
+    
+    zones[1].setup(300, 100, 200, 300, "Low.wav");
+    zones[1].addUI(new ofxAVUILabel(), 0.0, 0.33);
+    zones[1].addUI(new ofxAVUISlider(), 0.33, 0.33);
+    
+    zones[2].setup(500, 100, 200, 300, "synth.wav");
+    
     //OF sound start
     ofSoundStreamSetup(2,2,this, sampleRate, bufferSize, 4); /* this has to happen at the end of setup - it switches on the DAC */
     

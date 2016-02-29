@@ -5,7 +5,6 @@
 //
 //
 
-#include "ofMain.h"
 #include "ofxAVUIZone.h"
 
 ofxAVUIZone::ofxAVUIZone() {
@@ -38,8 +37,14 @@ void ofxAVUIZone::update() {
 }
 
 void ofxAVUIZone::draw() {
+    ofPushStyle();
+    ofNoFill();
     ofDrawRectangle(x, y, width, height);
     ofDrawBitmapString(sound, x, y);
+    ofPopStyle();
+    for(std::size_t i = 0; i < elements.size(); i++){
+        elements[i]->draw();
+    }
 }
 
 void ofxAVUIZone::play(int pos) {
@@ -53,3 +58,12 @@ void ofxAVUIZone::play(int pos) {
 double ofxAVUIZone::getOutput(int channel) {
     return output[channel];
 }
+
+
+void ofxAVUIZone::addUI(ofxAVUIBase * _element, float _pctFromTop, float _pctHeight) {
+    elements.push_back(_element);
+	_element->setPosition(x, y + height*_pctFromTop, width, height*_pctHeight);
+}
+
+
+

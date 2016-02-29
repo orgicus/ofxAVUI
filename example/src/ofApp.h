@@ -25,24 +25,12 @@ class ofApp : public ofBaseApp{
     
         void audioOut(float * output, int bufferSize, int nChannels);
         void audioIn(float * input, int bufferSize, int nChannels);
-    
-    
-    /* stick you maximilian declarations below
-     
-     For information on how maximilian works, take a look at the example code at
-     
-     http://www.maximilian.strangeloop.co.uk
-     
-     under 'Tutorials'.
-     
-     
-     */
-    
-    int		bufferSize; /* buffer size */
-    int		sampleRate;
+
+        int		bufferSize;
+        int		sampleRate;
 		
-//    maxiSample mySample;
-    
-    ofxAVUIZone zones[3];
+    //ofxAVUI
+    ofxAVUIZone     zones[3];
+    ofxAVUIXYPad    pad;
     
 };

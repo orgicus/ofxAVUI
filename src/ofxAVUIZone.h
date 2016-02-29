@@ -8,7 +8,15 @@
 #ifndef ofxAVUIZone_h
 #define ofxAVUIZone_h
 
+#include "ofMain.h"
 #include "ofxMaxim.h"
+#include "ofxAVUIConstants.h"
+#include "ofxAVUIBase.h"
+#include "ofxAVUIXYPad.h"
+#include "ofxAVUIButton.h"
+#include "ofxAVUIToggle.h"
+#include "ofxAVUILabel.h"
+#include "ofxAVUISlider.h"
 
 class ofxAVUIZone {
 	
@@ -20,6 +28,9 @@ public:
     void draw();
     void play(int pos);
     double getOutput(int channel);
+    
+//    void addUI(int _type, float _pctFromTop, float _pctHeight);
+    void addUI(ofxAVUIBase * _element, float _pctFromTop, float _pctHeight);
 
 private:
     bool        loaded;
@@ -28,6 +39,9 @@ private:
     string      sound;
     maxiSample  sample;
     double      output[2];
+    
+    std::vector <ofxAVUIBase *> elements;
+
 };
 
 
