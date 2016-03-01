@@ -16,6 +16,7 @@ public:
     ofxAVUIBase();
     virtual ~ofxAVUIBase();
     void setPosition(int _x, int _y, int _width, int _height);
+    void bindProperties(ofParameterGroup *_soundProperties);
     virtual void draw() = 0;
 
     virtual bool mouseMoved(ofMouseEventArgs & args) = 0;
@@ -27,7 +28,8 @@ public:
     virtual void mouseExited(ofMouseEventArgs & args) {}
 
 protected:
-    ofRectangle shape;
+    ofRectangle         shape;
+    ofParameterGroup   *soundProperties;
 };
 
 #endif /* ofxAVUIBase_h */

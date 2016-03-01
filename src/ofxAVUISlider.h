@@ -14,7 +14,8 @@
 
 class ofxAVUISlider : public ofxAVUIBase {
 public:
-    ofxAVUISlider();
+    ofxAVUISlider() {};
+    ofxAVUISlider(string _paramFloat, string _paramBool);
     virtual ~ofxAVUISlider();
 
     bool mouseMoved(ofMouseEventArgs & args);
@@ -25,6 +26,10 @@ public:
 
     void draw();
 
+private:
+    int         x;
+    bool        dragging;
+    string      param1, param2;
 };
 
 #endif /* ofxAVUISlider_h */

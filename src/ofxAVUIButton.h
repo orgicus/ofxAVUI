@@ -14,7 +14,8 @@
 
 class ofxAVUIButton : public ofxAVUIBase {
 public:
-    ofxAVUIButton();
+    ofxAVUIButton() {};
+    ofxAVUIButton(string _paramBool);
     virtual ~ofxAVUIButton();
     
     bool mouseMoved(ofMouseEventArgs & args);
@@ -25,6 +26,8 @@ public:
 
     void draw();
 
+private:
+    string  param1;
 };
 
 #endif /* ofxAVUIButton_h */

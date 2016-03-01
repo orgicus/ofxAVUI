@@ -20,6 +20,10 @@ void ofxAVUIBase::setPosition(int _x, int _y, int _width, int _height) {
     shape.y = _y;
     shape.width = _width;
     shape.height = _height;
-    
 }
+
+void ofxAVUIBase::bindProperties(ofParameterGroup *_soundProperties) {
+    soundProperties = _soundProperties;
+}
+
 

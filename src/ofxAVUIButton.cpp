@@ -7,8 +7,11 @@
 
 #include "ofxAVUIButton.h"
 
-ofxAVUIButton::ofxAVUIButton(){
-
+ofxAVUIButton::ofxAVUIButton(string _paramBool){
+//    if (soundProperties->getPosition(_paramBool) == 0 && soundProperties->getName(0)!=_paramBool) {
+//        ofLogWarning("Error in parameter names, expect the unexpected!");
+//    }
+    param1 = _paramBool;
 }
 
 ofxAVUIButton::~ofxAVUIButton(){
@@ -26,6 +29,9 @@ bool ofxAVUIButton::mouseMoved(ofMouseEventArgs & args) {
 }
 
 bool ofxAVUIButton::mousePressed(ofMouseEventArgs & args) {
+    if (shape.inside(args.x, args.y)) {
+        soundProperties->getBool(param1) = !soundProperties->getBool(param1);
+    }
 }
 
 bool ofxAVUIButton::mouseDragged(ofMouseEventArgs & args) {

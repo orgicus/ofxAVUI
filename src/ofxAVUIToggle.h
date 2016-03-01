@@ -14,7 +14,8 @@
 
 class ofxAVUIToggle : public ofxAVUIBase {
 public:
-    ofxAVUIToggle();
+    ofxAVUIToggle() {};
+    ofxAVUIToggle(string _paramBool);
     virtual ~ofxAVUIToggle();
 
     bool mouseMoved(ofMouseEventArgs & args);
@@ -24,6 +25,9 @@ public:
     bool mouseScrolled(ofMouseEventArgs & args);
 
     void draw();
+
+private:
+    string      param1;
 
 };
 
