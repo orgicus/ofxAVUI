@@ -37,7 +37,13 @@ public:
     void volumeChanged(float &_volume);
     void loopingChanged(bool &_looping);
     void triggerReceived(bool &_trigger);
-    
+    void frequencyChanged(float &_frequency);
+    void resonanceChanged(float &_resonance);
+    void filterOnChanged(bool &_filterOn);
+    void sizeChanged(float &_size);
+    void feedbackChanged(float &_feedback);
+    void delayOnChanged(bool &_delayOn);
+
     //UI
     void addUI(ofxAVUIBase * _element, float _pctFromTop, float _pctHeight);
 
@@ -48,11 +54,17 @@ private:
     ofxAVUIZonePlayer   player;
 
     //properties
-    ofParameter<char>  devNull; //we don't use first parameter in the group, as it is returned by parameterGroup->get(param1) whenever param1 doesn't match any of the parameter namess
+    ofParameter<char>       devNull; //we don't use first parameter in the group, as it is returned by parameterGroup->get(param1) whenever param1 doesn't match any of the parameter namess
     ofParameter<float>  pitch; //speed;
     ofParameter<float>  volume; //amplitude;
     ofParameter<bool>   looping;
     ofParameter<bool>   trigger;
+    ofParameter<float>  frequency;
+    ofParameter<float>  resonance;
+    ofParameter<bool>   filterOn;
+    ofParameter<float>  size;
+    ofParameter<float>  feedback;
+    ofParameter<bool>   delayOn;
     ofParameterGroup    soundProperties;
     
     std::vector <ofxAVUIBase *> elements;   //UI elements

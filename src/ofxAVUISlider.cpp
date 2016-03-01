@@ -7,13 +7,15 @@
 
 #include "ofxAVUISlider.h"
 
-ofxAVUISlider::ofxAVUISlider(string _paramFloat, string _paramBool, ofColor _bgColor, ofColor _fgColor){
+ofxAVUISlider::ofxAVUISlider(string _paramFloat, float _min, float _max, string _paramBool, ofColor _bgColor, ofColor _fgColor){
     bgColor = _bgColor;
     fgColor = _fgColor;
     x = 0;
     dragging = false;
     param1 = _paramFloat;
     param2 = _paramBool;
+    min1 = _min;
+    max1 = _max;
 }
 
 ofxAVUISlider::~ofxAVUISlider(){
@@ -40,7 +42,7 @@ bool ofxAVUISlider::mouseDragged(ofMouseEventArgs & args) {
     if (shape.inside(args.x, args.y)) {
         dragging = true;
         x = args.x;
-        float horizVal = ofMap(args.x, shape.x, shape.x + shape.width, 0.0, 1.0);
+        float horizVal = ofMap(args.x, shape.x, shape.x + shape.width, min1, max1);
         soundProperties->getFloat(param1) = horizVal;
     }
 }
@@ -49,7 +51,7 @@ bool ofxAVUISlider::mouseReleased(ofMouseEventArgs & args) {
     if (shape.inside(args.x, args.y)) {
         if (dragging) {
             x = args.x;
-            float horizVal = ofMap(args.x, shape.x, shape.x + shape.width, 0.0, 1.0);
+            float horizVal = ofMap(args.x, shape.x, shape.x + shape.width, min1, max1);
             soundProperties->getFloat(param1) = horizVal;
         } else {
             soundProperties->getBool(param2) = !soundProperties->getBool(param2);

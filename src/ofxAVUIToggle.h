@@ -29,7 +29,6 @@ public:
 private:
     ofColor     bgColor, fgColor;
     string      param1;
-
 };
 
 #endif /* ofxAVUIToggle_h */

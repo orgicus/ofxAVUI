@@ -24,7 +24,7 @@ class ofxAVUIZonePlayer {
         maxiEnv envelope;
         maxiSample sound;
         maxiMix bus;
-        maxiFilter myFilterLoRes, myFilterLoPass;
+        maxiFilter myFilter;
         maxiDelayline myDelayLine;
     
         //audio streams
@@ -33,26 +33,23 @@ class ofxAVUIZonePlayer {
         double filtered;
         double delayed;
         float * buffer;
+        int myBufferSize;
 
         //properties
         double speed;
         double amplitude;
-        bool touched;
         bool looping;
-        int myBufferSize;
         int sampleTrigger;
 
         //filter
-        double frequencyLoRes;
-        double frequencyLoPass;
-        double resonance;
-        double filterMix;
-        bool filterOn;
+        double  frequencyLoRes;
+        double  resonance;
+        bool    filterOn;
     
         //delay
-        double size;
-        double feedback;
-        bool delayOn;
+        double  size;
+        double  feedback;
+        bool    delayOn;
 
 };
 

@@ -15,7 +15,10 @@
 class ofxAVUIXYPad : public ofxAVUIBase {
 public:
     ofxAVUIXYPad() {};
-    ofxAVUIXYPad(string _paramFloat1, string _paramFloat2, string _paramBool, ofColor _bgColor, ofColor _fgColor);
+    ofxAVUIXYPad(string _paramFloat1, float _min1, float _max1,
+                 string _paramFloat2, float _min2, float _max2,
+                 string _paramBool,
+                 ofColor _bgColor, ofColor _fgColor);
     ~ofxAVUIXYPad();
 
     bool mouseMoved(ofMouseEventArgs & args);
@@ -31,6 +34,7 @@ private:
     ofRectangle location;
     bool        dragging;
     string      param1, param2, param3;
+    float       min1, max1, min2, max2;
 };
 
 #endif /* ofxAVUIXYPad_h */

@@ -43,6 +43,24 @@ ofxAVUIZone* ofxAVUIZone::setup(string _name, int _x, int _y, int _width, int _h
     soundProperties.add(trigger.set("trigger", true));
     trigger.addListener(this,&ofxAVUIZone::triggerReceived);
 
+    soundProperties.add(frequency.set("frequency", 5000, 20, 20000));
+    frequency.addListener(this,&ofxAVUIZone::frequencyChanged);
+
+    soundProperties.add(resonance.set("resonance", 50, 0, 100));
+    resonance.addListener(this,&ofxAVUIZone::resonanceChanged);
+
+    soundProperties.add(filterOn.set("filterToggle", false));
+    filterOn.addListener(this,&ofxAVUIZone::filterOnChanged);
+
+    soundProperties.add(size.set("size", 10000, 20000, 40000));
+    size.addListener(this,&ofxAVUIZone::sizeChanged);
+
+    soundProperties.add(feedback.set("feedback", 0.75, 0.5, 0.999));
+    feedback.addListener(this,&ofxAVUIZone::feedbackChanged);
+
+    soundProperties.add(delayOn.set("delayToggle", false));
+    delayOn.addListener(this,&ofxAVUIZone::delayOnChanged);
+
     loaded = true;
 }
 
@@ -51,23 +69,43 @@ ofxAVUIZone* ofxAVUIZone::setup(string _name, int _x, int _y, int _width, int _h
 //}
 
 void ofxAVUIZone::pitchChanged(float & _pitch){
-    cout << name << " player.speed = " << _pitch << endl;
     player.speed = _pitch;
 }
 
 void ofxAVUIZone::volumeChanged(float & _volume){
     player.amplitude = _volume;
-    cout << name << " player.amplitude = " << _volume << endl;
 }
 
 void ofxAVUIZone::triggerReceived(bool &_trigger){
     player.trigger(pitch, volume);
-    cout << name << " player.trigger(pitch, volume);" << endl;
 }
 
 void ofxAVUIZone::loopingChanged(bool & _looping){
-    player.looping = _looping;
-    cout << name << " player.looping = " << _looping << endl;
+    player.looping = !player.looping;
+}
+
+void ofxAVUIZone::frequencyChanged(float & _frequency){
+    player.frequencyLoRes = _frequency;
+}
+
+void ofxAVUIZone::resonanceChanged(float & _resonance){
+    player.resonance = _resonance;
+}
+
+void ofxAVUIZone::filterOnChanged(bool &_filterOn){
+    player.filterOn = !player.filterOn;
+}
+
+void ofxAVUIZone::sizeChanged(float & _size){
+    player.size = _size;
+}
+
+void ofxAVUIZone::feedbackChanged(float & _feedback){
+    player.feedback = _feedback;
+}
+
+void ofxAVUIZone::delayOnChanged(bool &_delayOn){
+    player.delayOn = !player.delayOn;
 }
 
 

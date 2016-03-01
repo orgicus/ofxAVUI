@@ -7,7 +7,7 @@
 
 #include "ofxAVUIXYPad.h"
 
-ofxAVUIXYPad::ofxAVUIXYPad(string _paramFloat1, string _paramFloat2, string _paramBool, ofColor _bgColor, ofColor _fgColor){
+ofxAVUIXYPad::ofxAVUIXYPad(string _paramFloat1, float _min1, float _max1, string _paramFloat2, float _min2, float _max2, string _paramBool, ofColor _bgColor, ofColor _fgColor){
     location.x=0;
     location.y=0;
     bgColor = _bgColor;
@@ -16,6 +16,10 @@ ofxAVUIXYPad::ofxAVUIXYPad(string _paramFloat1, string _paramFloat2, string _par
     param1 = _paramFloat1;
     param2 = _paramFloat2;
     param3 = _paramBool;
+    min1 = _min1;
+    max1 = _max1;
+    min2 = _min2;
+    max2 = _max2;
 }
 
 ofxAVUIXYPad::~ofxAVUIXYPad(){
@@ -45,8 +49,9 @@ bool ofxAVUIXYPad::mouseDragged(ofMouseEventArgs & args) {
         dragging = true;
         location.x = args.x;
         location.y = args.y;
-        float horizVal = ofMap(args.x, shape.x, shape.x + shape.width, 0.0, 1.0);
-        float vertVal = ofMap(args.y, shape.y, shape.y + shape.height, 0.0, 1.0);
+        float horizVal = ofMap(args.x, shape.x, shape.x + shape.width, min1, max1);
+        float vertVal = ofMap(args.y, shape.y, shape.y + shape.height, min2, max2);
+        
         soundProperties->getFloat(param1) = horizVal;
         soundProperties->getFloat(param2) = vertVal;
     }
@@ -57,8 +62,9 @@ bool ofxAVUIXYPad::mouseReleased(ofMouseEventArgs & args) {
         if (dragging) {
             location.x = args.x;
             location.y = args.y;
-            float horizVal = ofMap(args.x, shape.x, shape.x + shape.width, 0.0, 1.0);
-            float vertVal = ofMap(args.y, shape.y, shape.y + shape.height, 0.0, 1.0);
+            float horizVal = ofMap(args.x, shape.x, shape.x + shape.width, min1, max1);
+            float vertVal = ofMap(args.y, shape.y, shape.y + shape.height, min2, max2);
+            
             soundProperties->getFloat(param1) = horizVal;
             soundProperties->getFloat(param2) = vertVal;
         } else {
