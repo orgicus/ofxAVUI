@@ -8,6 +8,7 @@
 #include "ofxAVUIZone.h"
 
 ofxAVUIZone::ofxAVUIZone() {
+    name = "";
     shape.x = 0;
     shape.y = 0;
     shape.width = 0;
@@ -18,13 +19,17 @@ ofxAVUIZone::ofxAVUIZone() {
 ofxAVUIZone::~ofxAVUIZone() {
 }
 
-ofxAVUIZone* ofxAVUIZone::setup(int _x, int _y, int _width, int _height, string _sound, int _bufferSize) {
+ofxAVUIZone* ofxAVUIZone::setup(string _name, int _x, int _y, int _width, int _height, string _sound, int _bufferSize) {
+    name = _name;
     shape.x = _x;
     shape.y = _y;
     shape.width = _width;
     shape.height = _height;
     player.setup(ofToDataPath(_sound), _bufferSize);
     player.looping = true;
+
+    soundProperties.add(devNull.set("null", 1.0, 0.0, 2.0));
+//    devNull.addListener(this,&ofxAVUIZone::nullChanged);
 
     soundProperties.add(pitch.set("pitch", 1.0, 0.0, 2.0));
     pitch.addListener(this,&ofxAVUIZone::pitchChanged);
@@ -41,24 +46,28 @@ ofxAVUIZone* ofxAVUIZone::setup(int _x, int _y, int _width, int _height, string 
     loaded = true;
 }
 
+//void ofxAVUIZone::nullChanged(char & _null){
+//    cout << name << " null = " << _null << endl;
+//}
+
 void ofxAVUIZone::pitchChanged(float & _pitch){
+    cout << name << " player.speed = " << _pitch << endl;
     player.speed = _pitch;
-    cout << "player.speed = " << _pitch << endl;
 }
 
 void ofxAVUIZone::volumeChanged(float & _volume){
-//    player.amplitude = _volume;
-    cout << "player.amplitude = " << _volume << endl;
+    player.amplitude = _volume;
+    cout << name << " player.amplitude = " << _volume << endl;
 }
 
 void ofxAVUIZone::triggerReceived(bool &_trigger){
     player.trigger(pitch, volume);
-    cout << "player.trigger(pitch, volume);" << endl;
+    cout << name << " player.trigger(pitch, volume);" << endl;
 }
 
 void ofxAVUIZone::loopingChanged(bool & _looping){
     player.looping = _looping;
-    cout << "player.looping = " << _looping << endl;
+    cout << name << " player.looping = " << _looping << endl;
 }
 
 

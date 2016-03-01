@@ -7,8 +7,10 @@
 
 #include "ofxAVUILabel.h"
 
-ofxAVUILabel::ofxAVUILabel(){
-
+ofxAVUILabel::ofxAVUILabel(string _label, ofColor _bgColor, ofColor _fgColor){
+    bgColor = _bgColor;
+    fgColor = _fgColor;
+    label = _label;
 }
 
 ofxAVUILabel::~ofxAVUILabel(){
@@ -17,8 +19,10 @@ ofxAVUILabel::~ofxAVUILabel(){
 
 void ofxAVUILabel::draw(){
     ofPushStyle();
-    ofSetColor(0, 255, 255);
+    ofSetColor(bgColor);
     ofDrawRectangle(shape);
+    ofSetColor(fgColor);
+    ofDrawBitmapString(label, shape.x, shape.y + shape.height);
     ofPopStyle();
 }
 

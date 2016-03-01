@@ -7,13 +7,11 @@
 
 #include "ofxAVUISlider.h"
 
-ofxAVUISlider::ofxAVUISlider(string _paramFloat, string _paramBool){
+ofxAVUISlider::ofxAVUISlider(string _paramFloat, string _paramBool, ofColor _bgColor, ofColor _fgColor){
+    bgColor = _bgColor;
+    fgColor = _fgColor;
     x = 0;
     dragging = false;
-//    if ((soundProperties->getPosition(_paramFloat) == 0 && soundProperties->getName(0)!=_paramFloat) ||
-//        (soundProperties->getPosition(_paramBool) == 0 && soundProperties->getName(0)!=_paramBool)) {
-//        ofLogWarning("Error in parameter names, expect the unexpected!");
-//    }
     param1 = _paramFloat;
     param2 = _paramBool;
 }
@@ -24,9 +22,9 @@ ofxAVUISlider::~ofxAVUISlider(){
 
 void ofxAVUISlider::draw(){
     ofPushStyle();
-    ofSetColor(255, 255, 0);
+    ofSetColor(bgColor);
     ofDrawRectangle(shape);
-    ofSetColor(0, 0, 0);
+    ofSetColor(fgColor);
     ofDrawLine(x, shape.y, x, shape.y + shape.height);
     ofPopStyle();
 }

@@ -15,7 +15,7 @@
 class ofxAVUIButton : public ofxAVUIBase {
 public:
     ofxAVUIButton() {};
-    ofxAVUIButton(string _paramBool);
+    ofxAVUIButton(string _paramBool, ofColor _bgColor, ofColor _fgColor);
     virtual ~ofxAVUIButton();
     
     bool mouseMoved(ofMouseEventArgs & args);
@@ -27,7 +27,8 @@ public:
     void draw();
 
 private:
-    string  param1;
+    ofColor     bgColor, fgColor;
+    string      param1;
 };
 
 #endif /* ofxAVUIButton_h */

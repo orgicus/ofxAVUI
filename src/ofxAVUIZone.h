@@ -23,31 +23,32 @@ class ofxAVUIZone {
 public:
 	ofxAVUIZone();
 	~ofxAVUIZone();
-    ofxAVUIZone* setup(int _x, int _y, int _width, int _height, string _sound, int _bufferSize);
+    ofxAVUIZone* setup(string _name, int _x, int _y, int _width, int _height, string _sound, int _bufferSize);
     void update();
     void draw();
+    
+    //sound
     void play(int pos);
     double getOutput(int channel);
 
-    //event handlers
+    //event handlers for parameters
+//    void nullChanged(char &_null);    //debug
     void pitchChanged(float &_pitch);
     void volumeChanged(float &_volume);
     void loopingChanged(bool &_looping);
     void triggerReceived(bool &_trigger);
     
-//    void addUI(int _type, float _pctFromTop, float _pctHeight);
+    //UI
     void addUI(ofxAVUIBase * _element, float _pctFromTop, float _pctHeight);
 
 private:
-    bool        loaded;
-    ofRectangle shape;
-//    string      sound;
-//    maxiSample  sample;
-//    double      output[2];
-
+    bool                loaded;
+    ofRectangle         shape;
+    string              name;
     ofxAVUIZonePlayer   player;
 
     //properties
+    ofParameter<char>  devNull; //we don't use first parameter in the group, as it is returned by parameterGroup->get(param1) whenever param1 doesn't match any of the parameter namess
     ofParameter<float>  pitch; //speed;
     ofParameter<float>  volume; //amplitude;
     ofParameter<bool>   looping;

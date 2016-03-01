@@ -7,10 +7,9 @@
 
 #include "ofxAVUIButton.h"
 
-ofxAVUIButton::ofxAVUIButton(string _paramBool){
-//    if (soundProperties->getPosition(_paramBool) == 0 && soundProperties->getName(0)!=_paramBool) {
-//        ofLogWarning("Error in parameter names, expect the unexpected!");
-//    }
+ofxAVUIButton::ofxAVUIButton(string _paramBool, ofColor _bgColor, ofColor _fgColor){
+    bgColor = _bgColor;
+    fgColor = _fgColor;
     param1 = _paramBool;
 }
 
@@ -20,7 +19,7 @@ ofxAVUIButton::~ofxAVUIButton(){
 
 void ofxAVUIButton::draw(){
     ofPushStyle();
-    ofSetColor(255, 0, 0);
+    ofSetColor(fgColor);
     ofDrawRectangle(shape);
     ofPopStyle();
 }

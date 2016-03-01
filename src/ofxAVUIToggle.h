@@ -15,7 +15,7 @@
 class ofxAVUIToggle : public ofxAVUIBase {
 public:
     ofxAVUIToggle() {};
-    ofxAVUIToggle(string _paramBool);
+    ofxAVUIToggle(string _paramBool, ofColor _bgColor, ofColor _fgColor);
     virtual ~ofxAVUIToggle();
 
     bool mouseMoved(ofMouseEventArgs & args);
@@ -27,6 +27,7 @@ public:
     void draw();
 
 private:
+    ofColor     bgColor, fgColor;
     string      param1;
 
 };
