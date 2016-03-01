@@ -15,7 +15,7 @@
 class ofxAVUISlider : public ofxAVUIBase {
 public:
     ofxAVUISlider() {};
-    ofxAVUISlider(string _paramFloat, string _paramBool);
+    ofxAVUISlider(string _paramFloat, string _paramBool, ofColor _bgColor, ofColor _fgColor);
     virtual ~ofxAVUISlider();
 
     bool mouseMoved(ofMouseEventArgs & args);
@@ -27,6 +27,7 @@ public:
     void draw();
 
 private:
+    ofColor     bgColor, fgColor;
     int         x;
     bool        dragging;
     string      param1, param2;

@@ -15,7 +15,7 @@
 class ofxAVUIXYPad : public ofxAVUIBase {
 public:
     ofxAVUIXYPad() {};
-    ofxAVUIXYPad(string _paramFloat1, string _paramFloat2, string _paramBool);
+    ofxAVUIXYPad(string _paramFloat1, string _paramFloat2, string _paramBool, ofColor _bgColor, ofColor _fgColor);
     ~ofxAVUIXYPad();
 
     bool mouseMoved(ofMouseEventArgs & args);
@@ -27,6 +27,7 @@ public:
     void draw();
 
 private:
+    ofColor     bgColor, fgColor;
     ofRectangle location;
     bool        dragging;
     string      param1, param2, param3;

@@ -14,7 +14,7 @@
 
 class ofxAVUILabel : public ofxAVUIBase {
 public:
-    ofxAVUILabel();
+    ofxAVUILabel(string _label, ofColor _bgColor, ofColor _fgColor);
     virtual ~ofxAVUILabel();
 
     bool mouseMoved(ofMouseEventArgs & args);
@@ -25,6 +25,9 @@ public:
 
     void draw();
 
+private:
+    ofColor     bgColor, fgColor;
+    string      label;
 };
 
 #endif /* ofxAVUILabel_h */

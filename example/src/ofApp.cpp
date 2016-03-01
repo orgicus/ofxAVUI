@@ -19,16 +19,17 @@ void ofApp::setup(){
     ofxMaxiSettings::setup(sampleRate, 2, bufferSize);
     
     //ofxAVUI setup
-    zones[0].setup(100, 100, 200, 300, "sound.wav", bufferSize);
-    zones[0].addUI(new ofxAVUIXYPad("pitch", "volume", "trigger"), 0.0, 0.33);
-    zones[0].addUI(new ofxAVUIToggle("looping"), 0.33, 0.33);
-    zones[0].addUI(new ofxAVUIButton("trigger"), 0.66, 0.34);
+    zones[0].setup("zone1", 100, 100, 200, 300, "sound.wav", bufferSize);
+    zones[0].addUI(new ofxAVUIXYPad("pitch", "volume", "trigger", ofColor(100,100,100), ofColor(0,0,255)), 0.0, 0.33);
+    zones[0].addUI(new ofxAVUIToggle("looping", ofColor(100,100,100), ofColor(0,0,255)), 0.33, 0.33);
+    zones[0].addUI(new ofxAVUIButton("trigger", ofColor(100,100,100), ofColor(0,0,255)), 0.66, 0.34);
     
-    zones[1].setup(300, 100, 200, 300, "Low.wav", bufferSize);
-    zones[1].addUI(new ofxAVUILabel(), 0.0, 0.33);
-    zones[1].addUI(new ofxAVUISlider("aa", "bb"), 0.33, 0.33);
+    zones[1].setup("zone2", 300, 100, 200, 300, "Low.wav", bufferSize);
+    zones[1].addUI(new ofxAVUIXYPad("pitch", "volume", "trigger", ofColor(150,150,150), ofColor(0,255,0)), 0.0, 0.33);
+    zones[1].addUI(new ofxAVUILabel("POWER", ofColor(150,150,150), ofColor(0,255,0)), 0.33, 0.33);
+    zones[1].addUI(new ofxAVUISlider("pitch", "trigger", ofColor(150,150,150), ofColor(0,255,0)), 0.66, 0.34);
     
-    zones[2].setup(500, 100, 200, 300, "synth.wav", bufferSize);
+    zones[2].setup("zone3", 500, 100, 200, 300, "synth.wav", bufferSize);
     
     //OF sound start
     ofSoundStreamSetup(2,2,this, sampleRate, bufferSize, 4); /* this has to happen at the end of setup - it switches on the DAC */

@@ -7,15 +7,12 @@
 
 #include "ofxAVUIXYPad.h"
 
-ofxAVUIXYPad::ofxAVUIXYPad(string _paramFloat1, string _paramFloat2, string _paramBool){
+ofxAVUIXYPad::ofxAVUIXYPad(string _paramFloat1, string _paramFloat2, string _paramBool, ofColor _bgColor, ofColor _fgColor){
     location.x=0;
     location.y=0;
+    bgColor = _bgColor;
+    fgColor = _fgColor;
     dragging = false;
-//    if ((soundProperties->getPosition(_paramFloat1) == 0 && soundProperties->getName(0)!=_paramFloat1) ||
-//        (soundProperties->getPosition(_paramFloat2) == 0 && soundProperties->getName(0)!=_paramFloat2) ||
-//        (soundProperties->getPosition(_paramBool) == 0 && soundProperties->getName(0)!=_paramBool)) {
-//        ofLogWarning("Error in parameter names, expect the unexpected!");
-//    }
     param1 = _paramFloat1;
     param2 = _paramFloat2;
     param3 = _paramBool;
@@ -27,9 +24,9 @@ ofxAVUIXYPad::~ofxAVUIXYPad(){
 
 void ofxAVUIXYPad::draw(){
     ofPushStyle();
-    ofSetColor(0, 255, 0);
+    ofSetColor(bgColor);
     ofDrawRectangle(shape);
-    ofSetColor(0, 0, 0);
+    ofSetColor(fgColor);
     ofDrawLine(location.x-5, location.y, location.x+5, location.y);
     ofDrawLine(location.x, location.y-5, location.x, location.y+5);
     ofPopStyle();

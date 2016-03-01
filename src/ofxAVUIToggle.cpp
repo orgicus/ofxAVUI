@@ -7,10 +7,9 @@
 
 #include "ofxAVUIToggle.h"
 
-ofxAVUIToggle::ofxAVUIToggle(string _paramBool){
-//    if (soundProperties->getPosition(_paramBool) == 0 && soundProperties->getName(0)!=_paramBool) {
-//        ofLogWarning("Error in parameter names, expect the unexpected!");
-//    }
+ofxAVUIToggle::ofxAVUIToggle(string _paramBool, ofColor _bgColor, ofColor _fgColor){
+    bgColor = _bgColor;
+    fgColor = _fgColor;
     param1 = _paramBool;
 }
 
@@ -20,8 +19,10 @@ ofxAVUIToggle::~ofxAVUIToggle(){
 
 void ofxAVUIToggle::draw(){
     ofPushStyle();
-    ofSetColor(0, 0, 255);
+    ofSetColor(bgColor);
     ofDrawRectangle(shape);
+    ofSetColor(fgColor);
+    if (soundProperties->getBool(param1)) ofDrawRectangle(shape.x + shape.width * 0.1, shape.y + shape.height * 0.1, shape.width * 0.8, shape.height * 0.8);
     ofPopStyle();
 }
 
