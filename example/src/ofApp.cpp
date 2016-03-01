@@ -31,6 +31,7 @@ void ofApp::setup(){
     
     zones[2].setup("zone3", 500, 100, 200, 300, "synth.wav", bufferSize);
     
+    
     //OF sound start
     ofSoundStreamSetup(2,2,this, sampleRate, bufferSize, 4); /* this has to happen at the end of setup - it switches on the DAC */
     
