@@ -85,27 +85,27 @@ void ofxAVUIZone::loopingChanged(bool & _looping){
 }
 
 void ofxAVUIZone::frequencyChanged(float & _frequency){
-    player.frequencyLoRes = _frequency;
+    player.filter(frequency, resonance);
 }
 
 void ofxAVUIZone::resonanceChanged(float & _resonance){
-    player.resonance = _resonance;
+    player.filter(frequency, resonance);
 }
 
 void ofxAVUIZone::filterOnChanged(bool &_filterOn){
-    player.filterOn = !player.filterOn;
+//    player.filterOn = !player.filterOn;
 }
 
 void ofxAVUIZone::sizeChanged(float & _size){
-    player.size = _size;
+    player.delay(size, feedback);
 }
 
 void ofxAVUIZone::feedbackChanged(float & _feedback){
-    player.feedback = _feedback;
+    player.delay(size, feedback);
 }
 
 void ofxAVUIZone::delayOnChanged(bool &_delayOn){
-    player.delayOn = !player.delayOn;
+//    player.delayOn = !player.delayOn;
 }
 
 

@@ -14,6 +14,9 @@
 		3E50C7C71C84A4E5006A290D /* ofxAVUISlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C7C11C84A4E5006A290D /* ofxAVUISlider.cpp */; };
 		3E50C7C81C84A4E5006A290D /* ofxAVUIToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C7C31C84A4E5006A290D /* ofxAVUIToggle.cpp */; };
 		3E50C7CD1C85B718006A290D /* ofxAVUIZonePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C7CB1C85B718006A290D /* ofxAVUIZonePlayer.cpp */; };
+		3E90F3D81C875244004283DE /* ofxAVUISoundFxBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E90F3D61C875244004283DE /* ofxAVUISoundFxBase.cpp */; };
+		3E90F3DB1C875B63004283DE /* ofxAVUISoundFxFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E90F3D91C875B63004283DE /* ofxAVUISoundFxFilter.cpp */; };
+		3EA094C41C877F35002605E3 /* ofxAVUISoundFxDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EA094C21C877F35002605E3 /* ofxAVUISoundFxDelay.cpp */; };
 		3EBC7A6B1C8450B10074E549 /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC7A581C8450B10074E549 /* fft.cpp */; };
 		3EBC7A6C1C8450B10074E549 /* maxiAtoms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC7A5A1C8450B10074E549 /* maxiAtoms.cpp */; };
 		3EBC7A6D1C8450B10074E549 /* maxiBark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC7A5C1C8450B10074E549 /* maxiBark.cpp */; };
@@ -72,6 +75,12 @@
 		3E50C7C41C84A4E5006A290D /* ofxAVUIToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVUIToggle.h; sourceTree = "<group>"; };
 		3E50C7CB1C85B718006A290D /* ofxAVUIZonePlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAVUIZonePlayer.cpp; sourceTree = "<group>"; };
 		3E50C7CC1C85B718006A290D /* ofxAVUIZonePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVUIZonePlayer.h; sourceTree = "<group>"; };
+		3E90F3D61C875244004283DE /* ofxAVUISoundFxBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAVUISoundFxBase.cpp; sourceTree = "<group>"; };
+		3E90F3D71C875244004283DE /* ofxAVUISoundFxBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVUISoundFxBase.h; sourceTree = "<group>"; };
+		3E90F3D91C875B63004283DE /* ofxAVUISoundFxFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAVUISoundFxFilter.cpp; sourceTree = "<group>"; };
+		3E90F3DA1C875B63004283DE /* ofxAVUISoundFxFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVUISoundFxFilter.h; sourceTree = "<group>"; };
+		3EA094C21C877F35002605E3 /* ofxAVUISoundFxDelay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAVUISoundFxDelay.cpp; sourceTree = "<group>"; };
+		3EA094C31C877F35002605E3 /* ofxAVUISoundFxDelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVUISoundFxDelay.h; sourceTree = "<group>"; };
 		3EBC7A561C8450B10074E549 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
 		3EBC7A581C8450B10074E549 /* fft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fft.cpp; sourceTree = "<group>"; };
 		3EBC7A591C8450B10074E549 /* fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fft.h; sourceTree = "<group>"; };
@@ -176,6 +185,12 @@
 				3EBC7A8E1C84559E0074E549 /* ofxAVUIZone.h */,
 				3E50C7CB1C85B718006A290D /* ofxAVUIZonePlayer.cpp */,
 				3E50C7CC1C85B718006A290D /* ofxAVUIZonePlayer.h */,
+				3E90F3D61C875244004283DE /* ofxAVUISoundFxBase.cpp */,
+				3E90F3D71C875244004283DE /* ofxAVUISoundFxBase.h */,
+				3E90F3D91C875B63004283DE /* ofxAVUISoundFxFilter.cpp */,
+				3EA094C21C877F35002605E3 /* ofxAVUISoundFxDelay.cpp */,
+				3EA094C31C877F35002605E3 /* ofxAVUISoundFxDelay.h */,
+				3E90F3DA1C875B63004283DE /* ofxAVUISoundFxFilter.h */,
 				3E50C7B51C84804F006A290D /* ofxAVUIBase.cpp */,
 				3E50C7B61C84804F006A290D /* ofxAVUIBase.h */,
 				3E50C7B81C8481A3006A290D /* ofxAVUIXYPad.cpp */,
@@ -336,12 +351,15 @@
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				3E50C7C81C84A4E5006A290D /* ofxAVUIToggle.cpp in Sources */,
 				3E50C7C51C84A4E5006A290D /* ofxAVUIButton.cpp in Sources */,
+				3EA094C41C877F35002605E3 /* ofxAVUISoundFxDelay.cpp in Sources */,
 				3E50C7C71C84A4E5006A290D /* ofxAVUISlider.cpp in Sources */,
 				3EBC7A711C8450B10074E549 /* maximilian.cpp in Sources */,
 				3EBC7A8F1C84559E0074E549 /* ofxAVUIZone.cpp in Sources */,
+				3E90F3D81C875244004283DE /* ofxAVUISoundFxBase.cpp in Sources */,
 				3EBC7A701C8450B10074E549 /* maxiMFCC.cpp in Sources */,
 				3E50C7B71C84804F006A290D /* ofxAVUIBase.cpp in Sources */,
 				3E50C7BA1C8481A3006A290D /* ofxAVUIXYPad.cpp in Sources */,
+				3E90F3DB1C875B63004283DE /* ofxAVUISoundFxFilter.cpp in Sources */,
 				3EBC7A6F1C8450B10074E549 /* maxiGrains.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				3E50C7C61C84A4E5006A290D /* ofxAVUILabel.cpp in Sources */,

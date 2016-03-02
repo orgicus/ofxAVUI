@@ -10,6 +10,9 @@
 
 #include "ofMain.h"
 #include "ofxMaxim.h"
+#include "ofxAVUISoundFxBase.h"
+#include "ofxAVUISoundFxFilter.h"
+#include "ofxAVUISoundFxDelay.h"
 
 class ofxAVUIZonePlayer {
     
@@ -24,8 +27,6 @@ class ofxAVUIZonePlayer {
         maxiEnv envelope;
         maxiSample sound;
         maxiMix bus;
-        maxiFilter myFilter;
-        maxiDelayline myDelayLine;
     
         //audio streams
         double outputs[2];
@@ -42,15 +43,13 @@ class ofxAVUIZonePlayer {
         int sampleTrigger;
 
         //filter
-        double  frequencyLoRes;
-        double  resonance;
-        bool    filterOn;
-    
-        //delay
-        double  size;
-        double  feedback;
-        bool    delayOn;
+        ofxAVUISoundFxFilter  *filter1;
 
+        //delay
+        ofxAVUISoundFxDelay  *delay1;
+    
+        //list of fx
+        std::vector <ofxAVUISoundFxBase *> fxs;
 };
 
 

@@ -42,7 +42,7 @@ bool ofxAVUISlider::mouseDragged(ofMouseEventArgs & args) {
     if (shape.inside(args.x, args.y)) {
         dragging = true;
         x = args.x;
-        float horizVal = ofMap(args.x, shape.x, shape.x + shape.width, min1, max1);
+        float horizVal = ofMap(args.x, shape.x, shape.x + shape.width, 0.0, 1.0);
         soundProperties->getFloat(param1) = horizVal;
     }
 }
@@ -51,7 +51,7 @@ bool ofxAVUISlider::mouseReleased(ofMouseEventArgs & args) {
     if (shape.inside(args.x, args.y)) {
         if (dragging) {
             x = args.x;
-            float horizVal = ofMap(args.x, shape.x, shape.x + shape.width, min1, max1);
+            float horizVal = ofMap(args.x, shape.x, shape.x + shape.width, 0.0, 1.0);
             soundProperties->getFloat(param1) = horizVal;
         } else {
             soundProperties->getBool(param2) = !soundProperties->getBool(param2);
