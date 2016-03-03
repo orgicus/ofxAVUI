@@ -28,10 +28,8 @@ class ofApp : public ofBaseApp{
 
         int		bufferSize;
         int		sampleRate;
-        maxiFilter myFilter;
 
     //ofxAVUI
-    ofxAVUIZone     zones[3];
-    ofxAVUIXYPad    pad;
+    ofxAVUIZone             zones[3];
     
 };

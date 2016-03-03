@@ -23,6 +23,9 @@ class ofxAVUIZonePlayer {
         void delay(float _val1, float _val2);
         void play(int pos, double pan);
 
+        void addSoundFx(ofxAVUISoundFxBase * _fxElement);
+        void sendValue(string _param, float _val);
+        
         //objects
         maxiEnv envelope;
         maxiSample sound;
@@ -42,12 +45,6 @@ class ofxAVUIZonePlayer {
         bool looping;
         int sampleTrigger;
 
-        //filter
-        ofxAVUISoundFxFilter  *filter1;
-
-        //delay
-        ofxAVUISoundFxDelay  *delay1;
-    
         //list of fx
         std::vector <ofxAVUISoundFxBase *> fxs;
 };

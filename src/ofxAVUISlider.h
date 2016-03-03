@@ -15,7 +15,7 @@
 class ofxAVUISlider : public ofxAVUIBase {
 public:
     ofxAVUISlider() {};
-    ofxAVUISlider(string _paramFloat, float _min, float _max, string _paramBool, ofColor _bgColor, ofColor _fgColor);
+    ofxAVUISlider(string _paramBool, string _paramFloat, ofColor _bgColor, ofColor _fgColor);
     virtual ~ofxAVUISlider();
 
     bool mouseMoved(ofMouseEventArgs & args);
@@ -31,7 +31,6 @@ private:
     int         x;
     bool        dragging;
     string      param1, param2;
-    float       min1, max1;
 };
 
 #endif /* ofxAVUISlider_h */

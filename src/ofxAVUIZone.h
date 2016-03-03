@@ -17,6 +17,7 @@
 #include "ofxAVUILabel.h"
 #include "ofxAVUISlider.h"
 #include "ofxAVUIZonePlayer.h"
+#include "ofxAVUISoundFxBase.h"
 
 class ofxAVUIZone {
 	
@@ -46,6 +47,7 @@ public:
 
     //UI
     void addUI(ofxAVUIBase * _element, float _pctFromTop, float _pctHeight);
+    void addSoundFx(ofxAVUISoundFxBase * _fxElement);
 
 private:
     bool                loaded;

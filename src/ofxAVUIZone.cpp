@@ -43,25 +43,15 @@ ofxAVUIZone* ofxAVUIZone::setup(string _name, int _x, int _y, int _width, int _h
     soundProperties.add(trigger.set("trigger", true));
     trigger.addListener(this,&ofxAVUIZone::triggerReceived);
 
-    soundProperties.add(frequency.set("frequency", 5000, 20, 20000));
-    frequency.addListener(this,&ofxAVUIZone::frequencyChanged);
-
-    soundProperties.add(resonance.set("resonance", 50, 0, 100));
-    resonance.addListener(this,&ofxAVUIZone::resonanceChanged);
-
-    soundProperties.add(filterOn.set("filterToggle", false));
-    filterOn.addListener(this,&ofxAVUIZone::filterOnChanged);
-
-    soundProperties.add(size.set("size", 10000, 20000, 40000));
-    size.addListener(this,&ofxAVUIZone::sizeChanged);
-
-    soundProperties.add(feedback.set("feedback", 0.75, 0.5, 0.999));
-    feedback.addListener(this,&ofxAVUIZone::feedbackChanged);
-
-    soundProperties.add(delayOn.set("delayToggle", false));
-    delayOn.addListener(this,&ofxAVUIZone::delayOnChanged);
-
     loaded = true;
+}
+
+void ofxAVUIZone::addSoundFx(ofxAVUISoundFxBase * _fxElement) {
+    player.addSoundFx(_fxElement);
+//    soundProperties.add(delayOn.set("delayToggle", false));
+    soundProperties.add(*_fxElement->getParameter(0));
+    soundProperties.add(*_fxElement->getParameter(1));
+    soundProperties.add(*_fxElement->getToggle());
 }
 
 //void ofxAVUIZone::nullChanged(char & _null){
@@ -77,37 +67,13 @@ void ofxAVUIZone::volumeChanged(float & _volume){
 }
 
 void ofxAVUIZone::triggerReceived(bool &_trigger){
+    cout << "BUM ! " << "pitch " << pitch << " volume " << volume << endl;
     player.trigger(pitch, volume);
 }
 
 void ofxAVUIZone::loopingChanged(bool & _looping){
     player.looping = !player.looping;
 }
-
-void ofxAVUIZone::frequencyChanged(float & _frequency){
-    player.filter(frequency, resonance);
-}
-
-void ofxAVUIZone::resonanceChanged(float & _resonance){
-    player.filter(frequency, resonance);
-}
-
-void ofxAVUIZone::filterOnChanged(bool &_filterOn){
-//    player.filterOn = !player.filterOn;
-}
-
-void ofxAVUIZone::sizeChanged(float & _size){
-    player.delay(size, feedback);
-}
-
-void ofxAVUIZone::feedbackChanged(float & _feedback){
-    player.delay(size, feedback);
-}
-
-void ofxAVUIZone::delayOnChanged(bool &_delayOn){
-//    player.delayOn = !player.delayOn;
-}
-
 
 void ofxAVUIZone::update() {
 }
@@ -116,7 +82,6 @@ void ofxAVUIZone::draw() {
     ofPushStyle();
     ofNoFill();
     ofDrawRectangle(shape);
-//    ofDrawBitmapString(sound, shape.x, shape.y);
     ofPopStyle();
     for(std::size_t i = 0; i < elements.size(); i++){
         elements[i]->draw();
