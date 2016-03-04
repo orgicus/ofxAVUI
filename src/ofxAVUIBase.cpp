@@ -16,6 +16,7 @@ ofxAVUIBase::~ofxAVUIBase(){
 }
 
 void ofxAVUIBase::setPosition(int _x, int _y, int _width, int _height) {
+    cout << "foo" << endl;
     shape.x = _x;
     shape.y = _y;
     shape.width = _width;

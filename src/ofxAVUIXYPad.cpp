@@ -21,34 +21,27 @@ ofxAVUIXYPad::~ofxAVUIXYPad(){
 
 }
 
+void ofxAVUIXYPad::setPosition(int _x, int _y, int _width, int _height) {
+    cout << "bar" << endl;
+    shape.x = _x;
+    shape.y = _y;
+    shape.width = _width;
+    shape.height = _height;
+    location.x = _x + _width/2;
+    location.y = _y + _height/2;
+}
+
 void ofxAVUIXYPad::draw(){
     ofPushStyle();
     ofSetColor(bgColor);
     ofDrawRectangle(shape);
     ofSetColor(fgColor);
     ofNoFill();
-<<<<<<< HEAD
     drawContour();
     drawTitle();
     ofDrawLine(location.x-5, location.y, location.x+5, location.y);
     ofDrawLine(location.x, location.y-5, location.x, location.y+5);
-=======
-    //<contours>
-    ofDrawLine(shape.x,shape.y,shape.x+shape.width*0.25,shape.y);
-    ofDrawLine(shape.x+shape.width*0.75,shape.y,shape.x+shape.width,shape.y);
-    ofDrawLine(shape.x,shape.y+shape.height,shape.x+shape.width*0.25,shape.y+shape.height);
-    ofDrawLine(shape.x+shape.width*0.75,shape.y+shape.height,shape.x+shape.width,shape.y+shape.height);
-    ofDrawLine(shape.x,shape.y,shape.x,shape.y+shape.height*0.25);
-    ofDrawLine(shape.x+shape.width,shape.y,shape.x+shape.width,shape.y+shape.height*0.25);
-    ofDrawLine(shape.x,shape.y+shape.height*0.75,shape.x,shape.y+shape.height);
-    ofDrawLine(shape.x+shape.width,shape.y+shape.height*0.75,shape.x+shape.width,shape.y+shape.height);
-    //</contours>
-    ofDrawLine(location.x-10, location.y, location.x+10, location.y);
-    ofDrawLine(location.x, location.y-10, location.x, location.y+10);
-    
-    if(soundProperties->getBool(param3)==true) ofDrawCircle(location.x,location.y,10);
-    
->>>>>>> 9511d2c1093c307d91e51f3aa9f55e0937ec0768
+    if(soundProperties->getBool(paramBool)==true) ofDrawCircle(location.x,location.y,10);
     ofPopStyle();
 }
 
@@ -86,6 +79,8 @@ bool ofxAVUIXYPad::mouseReleased(ofMouseEventArgs & args) {
         px = horizVal;
         py = vertVal;
         } else {
+            location.x = args.x;
+            location.y = args.y;
             soundProperties->getBool(paramBool) = !soundProperties->getBool(paramBool);
         }
         dragging = false;

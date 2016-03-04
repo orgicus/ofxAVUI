@@ -17,7 +17,8 @@ public:
     ofxAVUIXYPad() {};
     ofxAVUIXYPad(string _title, string _paramBool, string _paramFloat1, string _paramFloat2);
     ~ofxAVUIXYPad();
-
+    void setPosition(int _x, int _y, int _width, int _height);   //overloaded so we can set the starting position for cursor
+    
     bool mouseMoved(ofMouseEventArgs & args);
     bool mousePressed(ofMouseEventArgs & args);
     bool mouseDragged(ofMouseEventArgs & args);
