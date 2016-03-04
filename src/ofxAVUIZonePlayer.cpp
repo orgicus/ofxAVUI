@@ -21,6 +21,7 @@ void ofxAVUIZonePlayer::setup(string _sound, int bufferSize){
     speed=1;
     amplitude=0.5;
     looping=false;
+    playing = false;
     sampleOut = 0;
 }
 
@@ -32,13 +33,22 @@ void ofxAVUIZonePlayer::trigger(float _speed, float _amplitude){
     sampleTrigger = 1;
     speed = _speed;
     amplitude = _amplitude;
+    playing = true;
+    stopping = false;
+}
+
+void ofxAVUIZonePlayer::stop(){
+    stopping = true;
 }
 
 double ofxAVUIZonePlayer::play(int pos, double pan){
-    if(looping){
-        sampleOut=envelope.ar(sound.play(speed), 0.1, 1, 1, sampleTrigger);
-    }else{
-        sampleOut=envelope.ar(sound.play(speed), 0.1, 0.9999, 1, sampleTrigger);
+    if (playing) {
+        if (looping) {
+            sampleOut=envelope.ar(sound.play(speed), 0.1, (stopping?0.9999:1), 1, sampleTrigger);
+        } else {
+            if (sampleTrigger==1) sound.trigger();
+            sampleOut=envelope.ar(sound.playOnce(speed), 0.1, (stopping?0.9999:1), 1, sampleTrigger);
+        }
     }
     
     for(std::size_t i = 0; i < fxs.size(); i++){

@@ -44,8 +44,9 @@ void ofxAVUIBase::drawContour() {
 }
 
 void ofxAVUIBase::drawTitle() {
-    ofRectangle titleBounds = getBitmapStringBoundingBox(title);
-    ofDrawBitmapString(title, shape.x + shape.width/2 - titleBounds.width/2, shape.y + shape.height/2 - titleBounds.height/2 + 10);
+//    ofRectangle titleBounds = getBitmapStringBoundingBox(title);
+//    ofDrawBitmapString(title, shape.x + shape.width/2 - titleBounds.width/2, shape.y + shape.height/2 - titleBounds.height/2 + 10);
+    ofDrawBitmapString(title, shape.x + 5, shape.y + shape.height - 5);
 }
 
 ofRectangle ofxAVUIBase::getBitmapStringBoundingBox(string text){

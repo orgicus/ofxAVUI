@@ -21,6 +21,7 @@ class ofxAVUIZonePlayer {
         ~ofxAVUIZonePlayer();
         void setup(string _sound, int bufferSize);
         void trigger(float _speed, float _amplitude);
+        void stop();
         void filter(float _val1, float _val2);
         void delay(float _val1, float _val2);
         double play(int pos, double pan);
@@ -45,6 +46,8 @@ class ofxAVUIZonePlayer {
         double speed;
         double amplitude;
         bool looping;
+        bool playing;
+        bool stopping;
         int sampleTrigger;
 
         //list of fx

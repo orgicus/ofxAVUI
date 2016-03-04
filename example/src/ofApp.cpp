@@ -21,7 +21,7 @@ void ofApp::setup(){
     //ofxAVUI setup
     //Zone 0
     zones[0].setup("zone1", 100, 100, 200, "sound.wav", ofColor(100,100,100, 0), ofColor(0,255,255, 255), bufferSize);
-    ofxAVUIXYPad *pad1 = new ofxAVUIXYPad("Pad", "trigger", "volume", "pitch");
+    ofxAVUIXYPad *pad1 = new ofxAVUIXYPad("Pad", "togglePlay", "volume", "pitch");
     zones[0].addUI(pad1, 100);
     ofxAVUIToggle *toggle1 = new ofxAVUIToggle("Looping", "looping");
     zones[0].addUI(toggle1, 100);

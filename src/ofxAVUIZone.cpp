@@ -47,6 +47,9 @@ ofxAVUIZone* ofxAVUIZone::setup(string _name, int _x, int _y, int _width, string
     soundProperties.add(trigger.set("trigger", true));
     trigger.addListener(this,&ofxAVUIZone::triggerReceived);
 
+    soundProperties.add(toggle.set("togglePlay", true));
+    toggle.addListener(this,&ofxAVUIZone::toggleReceived);
+
     loaded = true;
 }
 
@@ -71,8 +74,12 @@ void ofxAVUIZone::volumeChanged(float & _volume){
 }
 
 void ofxAVUIZone::triggerReceived(bool &_trigger){
-//    cout << "TRIGGER " << "pitch " << pitch << " volume " << volume << endl;
     player.trigger(pitch, volume);
+    trigger = false;
+}
+
+void ofxAVUIZone::toggleReceived(bool &_toggle){
+    if (toggle) player.trigger(pitch, volume); else player.stop();
 }
 
 void ofxAVUIZone::loopingChanged(bool & _looping){

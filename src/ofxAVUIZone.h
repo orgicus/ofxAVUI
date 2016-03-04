@@ -45,6 +45,7 @@ public:
     void volumeChanged(float &_volume);
     void loopingChanged(bool &_looping);
     void triggerReceived(bool &_trigger);
+    void toggleReceived(bool &_toggle);
     void frequencyChanged(float &_frequency);
     void resonanceChanged(float &_resonance);
     void filterOnChanged(bool &_filterOn);
@@ -70,6 +71,7 @@ private:
     ofParameter<float>  volume; //amplitude;
     ofParameter<bool>   looping;
     ofParameter<bool>   trigger;
+    ofParameter<bool>   toggle;
     ofParameter<float>  frequency;
     ofParameter<float>  resonance;
     ofParameter<bool>   filterOn;

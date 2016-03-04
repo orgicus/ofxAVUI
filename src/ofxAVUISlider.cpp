@@ -10,16 +10,32 @@
 ofxAVUISlider::ofxAVUISlider(string _title, string _paramFloat, string _paramBool){
     x = 0;
     dragging = false;
+    clicking = false;
     title = _title;
     param1 = _paramFloat;
-    param2 = _paramBool;
+    paramBool = _paramBool;
 }
 
 ofxAVUISlider::~ofxAVUISlider(){
 
 }
 
+void ofxAVUISlider::setPosition(int _x, int _y, int _width, int _height) {
+    shape.x = _x;
+    shape.y = _y;
+    shape.width = _width;
+    shape.height = _height;
+    x = _x + _width/2;
+}
+
 void ofxAVUISlider::draw(){
+    if (clicking && (ofGetElapsedTimeMillis() - doubleClickTimer > DOUBLECLICK_MILLIS)) {
+        x = mouseArgs.x;
+        ofParameter<float>  p1 = soundProperties->getFloat(param1);
+        float horizVal = ofMap(x, shape.x, shape.x + shape.width, p1.getMin(), p1.getMax());
+        p1 = horizVal;
+        clicking = false;
+    }
     ofPushStyle();
     ofSetColor(bgColor);
     ofDrawRectangle(shape);
@@ -28,7 +44,7 @@ void ofxAVUISlider::draw(){
     drawContour();
     drawTitle();
     ofDrawLine(x, shape.y, x, shape.y + shape.height);  //cursor
-    if(soundProperties->getBool(param2)) ofDrawCircle(x,shape.y + shape.height/2,10);
+    if(soundProperties->getBool(paramBool)) ofDrawCircle(x,shape.y + shape.height/2,10);
     ofPopStyle();
 }
 
@@ -51,13 +67,13 @@ bool ofxAVUISlider::mouseDragged(ofMouseEventArgs & args) {
 
 bool ofxAVUISlider::mouseReleased(ofMouseEventArgs & args) {
     if (shape.inside(args.x, args.y)) {
-        if (dragging) {
-            x = args.x;
-            ofParameter<float>  p1 = soundProperties->getFloat(param1);
-            float horizVal = ofMap(args.x, shape.x, shape.x + shape.width, p1.getMin(), p1.getMax());
-            p1 = horizVal;
+        if (ofGetElapsedTimeMillis() - doubleClickTimer <= DOUBLECLICK_MILLIS) {
+            soundProperties->getBool(paramBool) = !soundProperties->getBool(paramBool);
+            clicking = false;
         } else {
-            soundProperties->getBool(param2) = !soundProperties->getBool(param2);
+            doubleClickTimer = ofGetElapsedTimeMillis();
+            clicking = true;
+            mouseArgs = args;
         }
         dragging = false;
     }
