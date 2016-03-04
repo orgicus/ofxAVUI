@@ -28,6 +28,7 @@ void ofxAVUISlider::draw(){
     drawContour();
     drawTitle();
     ofDrawLine(x, shape.y, x, shape.y + shape.height);  //cursor
+    if(soundProperties->getBool(param2)) ofDrawCircle(x,shape.y + shape.height/2,10);
     ofPopStyle();
 }
 
