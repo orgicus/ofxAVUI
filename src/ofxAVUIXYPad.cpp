@@ -38,8 +38,11 @@ void ofxAVUIXYPad::draw(){
     ofDrawLine(shape.x,shape.y+shape.height*0.75,shape.x,shape.y+shape.height);
     ofDrawLine(shape.x+shape.width,shape.y+shape.height*0.75,shape.x+shape.width,shape.y+shape.height);
     //</contours>
-    ofDrawLine(location.x-5, location.y, location.x+5, location.y);
-    ofDrawLine(location.x, location.y-5, location.x, location.y+5);
+    ofDrawLine(location.x-10, location.y, location.x+10, location.y);
+    ofDrawLine(location.x, location.y-10, location.x, location.y+10);
+    
+    if(soundProperties->getBool(param3)==true) ofDrawCircle(location.x,location.y,10);
+    
     ofPopStyle();
 }
 
