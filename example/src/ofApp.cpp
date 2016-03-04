@@ -27,7 +27,9 @@ void ofApp::setup(){
     zones[0].addUI(toggle1, 100);
     ofxAVUIButton *button1 = new ofxAVUIButton("Trigger", "trigger");
     zones[0].addUI(button1, 100);
-
+    
+    //zones[0].updateParameters();  //TODO: update UI position to routed soundFx parameters
+    
     //Zone 1
     zones[1].setup("zone2", 300, 100, 200, "Low.wav", ofColor(100,100,100, 0), ofColor(255,255,0, 255), bufferSize);
     ofxAVUIXYPad *pad2 = new ofxAVUIXYPad("Pad", "trigger", "pitch", "volume");
