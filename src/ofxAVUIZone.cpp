@@ -19,9 +19,14 @@ ofxAVUIZone::ofxAVUIZone() {
 ofxAVUIZone::~ofxAVUIZone() {
 }
 
+<<<<<<< HEAD
 ofxAVUIZone* ofxAVUIZone::setup(string _name, int _x, int _y, int _width, int _height, string _sound,
                                 ofColor _backgroundColor, ofColor _foregroundColor, int _bufferSize) {
     ofSetCircleResolution(100);
+=======
+ofxAVUIZone* ofxAVUIZone::setup(string _name, int _x, int _y, int _width, int _height, string _sound, int _bufferSize) {
+    ofSetCircleResolution(200);
+>>>>>>> 9511d2c1093c307d91e51f3aa9f55e0937ec0768
     name = _name;
     shape.x = _x;
     shape.y = _y;

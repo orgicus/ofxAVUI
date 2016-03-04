@@ -27,10 +27,28 @@ void ofxAVUIXYPad::draw(){
     ofDrawRectangle(shape);
     ofSetColor(fgColor);
     ofNoFill();
+<<<<<<< HEAD
     drawContour();
     drawTitle();
     ofDrawLine(location.x-5, location.y, location.x+5, location.y);
     ofDrawLine(location.x, location.y-5, location.x, location.y+5);
+=======
+    //<contours>
+    ofDrawLine(shape.x,shape.y,shape.x+shape.width*0.25,shape.y);
+    ofDrawLine(shape.x+shape.width*0.75,shape.y,shape.x+shape.width,shape.y);
+    ofDrawLine(shape.x,shape.y+shape.height,shape.x+shape.width*0.25,shape.y+shape.height);
+    ofDrawLine(shape.x+shape.width*0.75,shape.y+shape.height,shape.x+shape.width,shape.y+shape.height);
+    ofDrawLine(shape.x,shape.y,shape.x,shape.y+shape.height*0.25);
+    ofDrawLine(shape.x+shape.width,shape.y,shape.x+shape.width,shape.y+shape.height*0.25);
+    ofDrawLine(shape.x,shape.y+shape.height*0.75,shape.x,shape.y+shape.height);
+    ofDrawLine(shape.x+shape.width,shape.y+shape.height*0.75,shape.x+shape.width,shape.y+shape.height);
+    //</contours>
+    ofDrawLine(location.x-10, location.y, location.x+10, location.y);
+    ofDrawLine(location.x, location.y-10, location.x, location.y+10);
+    
+    if(soundProperties->getBool(param3)==true) ofDrawCircle(location.x,location.y,10);
+    
+>>>>>>> 9511d2c1093c307d91e51f3aa9f55e0937ec0768
     ofPopStyle();
 }
 

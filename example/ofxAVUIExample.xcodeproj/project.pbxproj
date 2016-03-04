@@ -10,7 +10,7 @@
 		3E50C7B71C84804F006A290D /* ofxAVUIBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C7B51C84804F006A290D /* ofxAVUIBase.cpp */; };
 		3E50C7BA1C8481A3006A290D /* ofxAVUIXYPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C7B81C8481A3006A290D /* ofxAVUIXYPad.cpp */; };
 		3E50C7C51C84A4E5006A290D /* ofxAVUIButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C7BD1C84A4E5006A290D /* ofxAVUIButton.cpp */; };
-		3E50C7C61C84A4E5006A290D /* ofxAVUILabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C7BF1C84A4E5006A290D /* ofxAVUILabel.cpp */; };
+		3E50C7C61C84A4E5006A290D /* ofxAVUIEmpty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C7BF1C84A4E5006A290D /* ofxAVUIEmpty.cpp */; };
 		3E50C7C71C84A4E5006A290D /* ofxAVUISlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C7C11C84A4E5006A290D /* ofxAVUISlider.cpp */; };
 		3E50C7C81C84A4E5006A290D /* ofxAVUIToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C7C31C84A4E5006A290D /* ofxAVUIToggle.cpp */; };
 		3E50C7CD1C85B718006A290D /* ofxAVUIZonePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C7CB1C85B718006A290D /* ofxAVUIZonePlayer.cpp */; };
@@ -69,8 +69,8 @@
 		3E50C7B91C8481A3006A290D /* ofxAVUIXYPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVUIXYPad.h; sourceTree = "<group>"; };
 		3E50C7BD1C84A4E5006A290D /* ofxAVUIButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAVUIButton.cpp; sourceTree = "<group>"; };
 		3E50C7BE1C84A4E5006A290D /* ofxAVUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVUIButton.h; sourceTree = "<group>"; };
-		3E50C7BF1C84A4E5006A290D /* ofxAVUILabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAVUILabel.cpp; sourceTree = "<group>"; };
-		3E50C7C01C84A4E5006A290D /* ofxAVUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVUILabel.h; sourceTree = "<group>"; };
+		3E50C7BF1C84A4E5006A290D /* ofxAVUIEmpty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAVUIEmpty.cpp; sourceTree = "<group>"; };
+		3E50C7C01C84A4E5006A290D /* ofxAVUIEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVUIEmpty.h; sourceTree = "<group>"; };
 		3E50C7C11C84A4E5006A290D /* ofxAVUISlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAVUISlider.cpp; sourceTree = "<group>"; };
 		3E50C7C21C84A4E5006A290D /* ofxAVUISlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVUISlider.h; sourceTree = "<group>"; };
 		3E50C7C31C84A4E5006A290D /* ofxAVUIToggle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAVUIToggle.cpp; sourceTree = "<group>"; };
@@ -155,8 +155,8 @@
 				3E50C7B91C8481A3006A290D /* ofxAVUIXYPad.h */,
 				3E50C7BD1C84A4E5006A290D /* ofxAVUIButton.cpp */,
 				3E50C7BE1C84A4E5006A290D /* ofxAVUIButton.h */,
-				3E50C7BF1C84A4E5006A290D /* ofxAVUILabel.cpp */,
-				3E50C7C01C84A4E5006A290D /* ofxAVUILabel.h */,
+				3E50C7BF1C84A4E5006A290D /* ofxAVUIEmpty.cpp */,
+				3E50C7C01C84A4E5006A290D /* ofxAVUIEmpty.h */,
 				3E50C7C11C84A4E5006A290D /* ofxAVUISlider.cpp */,
 				3E50C7C21C84A4E5006A290D /* ofxAVUISlider.h */,
 				3E50C7C31C84A4E5006A290D /* ofxAVUIToggle.cpp */,
@@ -234,8 +234,8 @@
 				3EBC7A861C8452400074E549 /* ofxAVUI.h */,
 				3EBC7A8D1C84559E0074E549 /* ofxAVUIZone.cpp */,
 				3EBC7A8E1C84559E0074E549 /* ofxAVUIZone.h */,
-				3EA094CB1C888287002605E3 /* visuals */,
 				3EA094C91C88823F002605E3 /* sound */,
+				3EA094CB1C888287002605E3 /* visuals */,
 				3EA094CA1C888263002605E3 /* UI */,
 			);
 			path = src;
@@ -398,7 +398,7 @@
 				3E90F3DB1C875B63004283DE /* ofxAVUISoundFxFilter.cpp in Sources */,
 				3EBC7A6F1C8450B10074E549 /* maxiGrains.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
-				3E50C7C61C84A4E5006A290D /* ofxAVUILabel.cpp in Sources */,
+				3E50C7C61C84A4E5006A290D /* ofxAVUIEmpty.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
