@@ -19,13 +19,16 @@ ofxAVUIZone::ofxAVUIZone() {
 ofxAVUIZone::~ofxAVUIZone() {
 }
 
-ofxAVUIZone* ofxAVUIZone::setup(string _name, int _x, int _y, int _width, int _height, string _sound, int _bufferSize) {
+ofxAVUIZone* ofxAVUIZone::setup(string _name, int _x, int _y, int _width, int _height, string _sound,
+                                ofColor _backgroundColor, ofColor _foregroundColor, int _bufferSize) {
     ofSetCircleResolution(100);
     name = _name;
     shape.x = _x;
     shape.y = _y;
     shape.width = _width;
     shape.height = _height;
+    fgColor = _foregroundColor;
+    bgColor = _backgroundColor;
     player.setup(ofToDataPath(_sound), _bufferSize);
     player.looping = true;
 
@@ -68,7 +71,7 @@ void ofxAVUIZone::volumeChanged(float & _volume){
 }
 
 void ofxAVUIZone::triggerReceived(bool &_trigger){
-    cout << "BUM ! " << "pitch " << pitch << " volume " << volume << endl;
+//    cout << "TRIGGER " << "pitch " << pitch << " volume " << volume << endl;
     player.trigger(pitch, volume);
 }
 
@@ -81,15 +84,13 @@ void ofxAVUIZone::update() {
 
 void ofxAVUIZone::draw() {
     ofPushStyle();
-    ofNoFill();
-    ofDrawRectangle(shape);
-    ofPopStyle();
     for(std::size_t i = 0; i < uis.size(); i++){
         uis[i]->draw();
     }
     for(std::size_t i = 0; i < visuals.size(); i++){
         visuals[i]->draw(player.buffer, player.amplitude);
     }
+    ofPopStyle();
 }
 
 void ofxAVUIZone::play(int pos) {
@@ -109,6 +110,7 @@ double ofxAVUIZone::getOutput(int channel) {
 void ofxAVUIZone::addUI(ofxAVUIBase * _element, float _pctFromTop, float _pctHeight) {
     uis.push_back(_element);
 	_element->setPosition(shape.x, shape.y + shape.height*_pctFromTop, shape.width, shape.height*_pctHeight);
+    _element->setColor(bgColor, fgColor);
     _element->bindProperties(&soundProperties);
 }
 

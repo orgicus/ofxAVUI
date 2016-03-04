@@ -7,9 +7,8 @@
 
 #include "ofxAVUIToggle.h"
 
-ofxAVUIToggle::ofxAVUIToggle(string _paramBool, ofColor _bgColor, ofColor _fgColor){
-    bgColor = _bgColor;
-    fgColor = _fgColor;
+ofxAVUIToggle::ofxAVUIToggle(string _title, string _paramBool){
+    title = _title;
     param1 = _paramBool;
 }
 
@@ -22,9 +21,13 @@ void ofxAVUIToggle::draw(){
     ofSetColor(bgColor);
     ofDrawRectangle(shape);
     ofSetColor(fgColor);
+    drawContour();
+    drawTitle();
+    ofSetColor(fgColor, 128);
+    ofEnableAlphaBlending();
     (soundProperties->getBool(param1))? ofFill() : ofNoFill();
     ofDrawCircle(shape.x + shape.width/2, shape.y + shape.height /2, shape.height /4) ;
-
+    ofDisableAlphaBlending();
     ofPopStyle();
 }
 

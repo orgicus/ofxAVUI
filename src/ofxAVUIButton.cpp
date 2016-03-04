@@ -7,9 +7,8 @@
 
 #include "ofxAVUIButton.h"
 
-ofxAVUIButton::ofxAVUIButton(string _paramBool, ofColor _bgColor, ofColor _fgColor){
-    bgColor = _bgColor;
-    fgColor = _fgColor;
+ofxAVUIButton::ofxAVUIButton(string _title, string _paramBool){
+    title = _title;
     param1 = _paramBool;
 }
 
@@ -22,17 +21,8 @@ void ofxAVUIButton::draw(){
     ofSetColor(bgColor);
     ofDrawRectangle(shape);
     ofSetColor(fgColor);
-    //<contours>
-    ofDrawLine(shape.x,shape.y,shape.x+shape.width*0.25,shape.y);
-    ofDrawLine(shape.x+shape.width*0.75,shape.y,shape.x+shape.width,shape.y);
-    ofDrawLine(shape.x,shape.y+shape.height,shape.x+shape.width*0.25,shape.y+shape.height);
-    ofDrawLine(shape.x+shape.width*0.75,shape.y+shape.height,shape.x+shape.width,shape.y+shape.height);
-    ofDrawLine(shape.x,shape.y,shape.x,shape.y+shape.height*0.25);
-    ofDrawLine(shape.x+shape.width,shape.y,shape.x+shape.width,shape.y+shape.height*0.25);
-    ofDrawLine(shape.x,shape.y+shape.height*0.75,shape.x,shape.y+shape.height);
-    ofDrawLine(shape.x+shape.width,shape.y+shape.height*0.75,shape.x+shape.width,shape.y+shape.height);
-    //</contours>
-
+    drawContour();
+    drawTitle();
     ofPopStyle();
 }
 

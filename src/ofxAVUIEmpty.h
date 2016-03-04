@@ -1,21 +1,21 @@
 //
-//  ofxAVUILabel.h
+//  ofxAVUIEmpty.h
 //
 //  Created by Borut Kumperscak on 29/02/2016.
 //
 //
 
-#ifndef ofxAVUILabel_h
-#define ofxAVUILabel_h
+#ifndef ofxAVUIEmpty_h
+#define ofxAVUIEmpty_h
 
 #include "ofMain.h"
 #include "ofxAVUIBase.h"
 
 
-class ofxAVUILabel : public ofxAVUIBase {
+class ofxAVUIEmpty : public ofxAVUIBase {
 public:
-    ofxAVUILabel(string _label, ofColor _bgColor, ofColor _fgColor);
-    virtual ~ofxAVUILabel();
+    ofxAVUIEmpty(string _title);
+    virtual ~ofxAVUIEmpty();
 
     bool mouseMoved(ofMouseEventArgs & args);
     bool mousePressed(ofMouseEventArgs & args);
@@ -25,9 +25,6 @@ public:
 
     void draw();
 
-private:
-    ofColor     bgColor, fgColor;
-    string      label;
 };
 
-#endif /* ofxAVUILabel_h */
+#endif /* ofxAVUIEmpty_h */

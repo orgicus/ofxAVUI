@@ -15,7 +15,7 @@
 #include "ofxAVUIXYPad.h"
 #include "ofxAVUIButton.h"
 #include "ofxAVUIToggle.h"
-#include "ofxAVUILabel.h"
+#include "ofxAVUIEmpty.h"
 #include "ofxAVUISlider.h"
 
 #include "ofxAVUIVisualBase.h"
@@ -29,7 +29,8 @@ class ofxAVUIZone {
 public:
 	ofxAVUIZone();
 	~ofxAVUIZone();
-    ofxAVUIZone* setup(string _name, int _x, int _y, int _width, int _height, string _sound, int _bufferSize);
+    ofxAVUIZone* setup(string _name, int _x, int _y, int _width, int _height, string _sound,
+                        ofColor _backgroundColor, ofColor _foregroundColor, int _bufferSize);
     void update();
     void draw();
     
@@ -60,7 +61,8 @@ private:
     ofRectangle         shape;
     string              name;
     ofxAVUIZonePlayer   player;
-
+    ofColor             fgColor, bgColor;
+    
     //properties
     ofParameter<char>       devNull; //we don't use first parameter in the group, as it is returned by parameterGroup->get(param1) whenever param1 doesn't match any of the parameter namess
     ofParameter<float>  pitch; //speed;

@@ -7,11 +7,10 @@
 
 #include "ofxAVUISlider.h"
 
-ofxAVUISlider::ofxAVUISlider(string _paramFloat, string _paramBool, ofColor _bgColor, ofColor _fgColor){
-    bgColor = _bgColor;
-    fgColor = _fgColor;
+ofxAVUISlider::ofxAVUISlider(string _title, string _paramFloat, string _paramBool){
     x = 0;
     dragging = false;
+    title = _title;
     param1 = _paramFloat;
     param2 = _paramBool;
 }
@@ -26,17 +25,9 @@ void ofxAVUISlider::draw(){
     ofDrawRectangle(shape);
     ofSetColor(fgColor);
     ofNoFill();
-    //<contours>
-    ofDrawLine(shape.x,shape.y,shape.x+shape.width*0.25,shape.y);
-    ofDrawLine(shape.x+shape.width*0.75,shape.y,shape.x+shape.width,shape.y);
-    ofDrawLine(shape.x,shape.y+shape.height,shape.x+shape.width*0.25,shape.y+shape.height);
-    ofDrawLine(shape.x+shape.width*0.75,shape.y+shape.height,shape.x+shape.width,shape.y+shape.height);
-    ofDrawLine(shape.x,shape.y,shape.x,shape.y+shape.height*0.25);
-    ofDrawLine(shape.x+shape.width,shape.y,shape.x+shape.width,shape.y+shape.height*0.25);
-    ofDrawLine(shape.x,shape.y+shape.height*0.75,shape.x,shape.y+shape.height);
-    ofDrawLine(shape.x+shape.width,shape.y+shape.height*0.75,shape.x+shape.width,shape.y+shape.height);
-    //</contours>
-
+    drawContour();
+    drawTitle();
+    ofDrawLine(x, shape.y, x, shape.y + shape.height);  //cursor
     ofPopStyle();
 }
 
