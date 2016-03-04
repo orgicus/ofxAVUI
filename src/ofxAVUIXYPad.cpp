@@ -27,6 +27,17 @@ void ofxAVUIXYPad::draw(){
     ofSetColor(bgColor);
     ofDrawRectangle(shape);
     ofSetColor(fgColor);
+    ofNoFill();
+    //<contours>
+    ofDrawLine(shape.x,shape.y,shape.x+shape.width*0.25,shape.y);
+    ofDrawLine(shape.x+shape.width*0.75,shape.y,shape.x+shape.width,shape.y);
+    ofDrawLine(shape.x,shape.y+shape.height,shape.x+shape.width*0.25,shape.y+shape.height);
+    ofDrawLine(shape.x+shape.width*0.75,shape.y+shape.height,shape.x+shape.width,shape.y+shape.height);
+    ofDrawLine(shape.x,shape.y,shape.x,shape.y+shape.height*0.25);
+    ofDrawLine(shape.x+shape.width,shape.y,shape.x+shape.width,shape.y+shape.height*0.25);
+    ofDrawLine(shape.x,shape.y+shape.height*0.75,shape.x,shape.y+shape.height);
+    ofDrawLine(shape.x+shape.width,shape.y+shape.height*0.75,shape.x+shape.width,shape.y+shape.height);
+    //</contours>
     ofDrawLine(location.x-5, location.y, location.x+5, location.y);
     ofDrawLine(location.x, location.y-5, location.x, location.y+5);
     ofPopStyle();

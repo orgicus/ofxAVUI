@@ -22,7 +22,9 @@ void ofxAVUIToggle::draw(){
     ofSetColor(bgColor);
     ofDrawRectangle(shape);
     ofSetColor(fgColor);
-    if (soundProperties->getBool(param1)) ofDrawRectangle(shape.x + shape.width * 0.1, shape.y + shape.height * 0.1, shape.width * 0.8, shape.height * 0.8);
+    (soundProperties->getBool(param1))? ofFill() : ofNoFill();
+    ofDrawCircle(shape.x + shape.width/2, shape.y + shape.height /2, shape.height /4) ;
+
     ofPopStyle();
 }
 
