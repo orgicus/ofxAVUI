@@ -83,14 +83,20 @@ void ofxAVUIZone::draw() {
     ofNoFill();
     ofDrawRectangle(shape);
     ofPopStyle();
-    for(std::size_t i = 0; i < elements.size(); i++){
-        elements[i]->draw();
+    for(std::size_t i = 0; i < uis.size(); i++){
+        uis[i]->draw();
+    }
+    for(std::size_t i = 0; i < visuals.size(); i++){
+        visuals[i]->draw(player.buffer, player.amplitude);
     }
 }
 
 void ofxAVUIZone::play(int pos) {
     if (loaded) {
-        player.play(pos, 0.5);
+        double sample = player.play(pos, 0.5);
+//        for(std::size_t i = 0; i < visuals.size(); i++){
+//            visuals[i]->compute(pos, sample);
+//        }
     }
 }
 
@@ -100,9 +106,15 @@ double ofxAVUIZone::getOutput(int channel) {
 
 
 void ofxAVUIZone::addUI(ofxAVUIBase * _element, float _pctFromTop, float _pctHeight) {
-    elements.push_back(_element);
+    uis.push_back(_element);
 	_element->setPosition(shape.x, shape.y + shape.height*_pctFromTop, shape.width, shape.height*_pctHeight);
     _element->bindProperties(&soundProperties);
+}
+
+void ofxAVUIZone::addVisual(ofxAVUIVisualBase * _element, float _pctFromTop, float _pctHeight) {
+    visuals.push_back(_element);
+    _element->setup(player.myBufferSize);
+	_element->setPosition(shape.x, shape.y + shape.height*_pctFromTop, shape.width, shape.height*_pctHeight);
 }
 
 

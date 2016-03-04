@@ -7,6 +7,12 @@
 
 #include "ofxAVUIZonePlayer.h"
 
+ofxAVUIZonePlayer::ofxAVUIZonePlayer() {
+}
+
+ofxAVUIZonePlayer::~ofxAVUIZonePlayer() {
+}
+
 void ofxAVUIZonePlayer::setup(string _sound, int bufferSize){
     myBufferSize=bufferSize;
     buffer = new float[bufferSize];
@@ -15,6 +21,7 @@ void ofxAVUIZonePlayer::setup(string _sound, int bufferSize){
     speed=1;
     amplitude=0.5;
     looping=false;
+    sampleOut = 0;
 }
 
 void ofxAVUIZonePlayer::addSoundFx(ofxAVUISoundFxBase * _fxElement) {
@@ -27,7 +34,7 @@ void ofxAVUIZonePlayer::trigger(float _speed, float _amplitude){
     amplitude = _amplitude;
 }
 
-void ofxAVUIZonePlayer::play(int pos, double pan){
+double ofxAVUIZonePlayer::play(int pos, double pan){
     if(looping){
         sampleOut=envelope.ar(sound.play(speed), 0.1, 1, 1, sampleTrigger);
     }else{
@@ -41,5 +48,6 @@ void ofxAVUIZonePlayer::play(int pos, double pan){
     buffer[pos]=sampleOut;
     bus.stereo(sampleOut*amplitude, outputs, pan);
     sampleTrigger = 0;
+    return sampleOut*amplitude; //used for visualisation
 }
 

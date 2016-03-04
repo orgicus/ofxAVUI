@@ -42,6 +42,9 @@ void ofApp::setup(){
     ofxAVUIXYPad *pad3 = new ofxAVUIXYPad("trigger", "pitch", "volume", ofColor(200,200,200), ofColor(255,0,0));
     zones[2].addUI(pad3, 0.0, 0.33);
     
+    ofxAVUIVisualWave *visual1 = new ofxAVUIVisualWave();
+    zones[2].addVisual(visual1, 0.0, 0.33);
+    
     ofxAVUISoundFxFilter *filter1 = new ofxAVUISoundFxFilter();
     filter1->setup("filter", false, "frequency", 200, 20000, 5000, "resonance", 0, 100, 50);
     zones[2].addSoundFx(filter1);
