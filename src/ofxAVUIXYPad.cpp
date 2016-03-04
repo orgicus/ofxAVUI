@@ -22,7 +22,6 @@ ofxAVUIXYPad::~ofxAVUIXYPad(){
 }
 
 void ofxAVUIXYPad::setPosition(int _x, int _y, int _width, int _height) {
-    cout << "bar" << endl;
     shape.x = _x;
     shape.y = _y;
     shape.width = _width;
@@ -41,7 +40,7 @@ void ofxAVUIXYPad::draw(){
     drawTitle();
     ofDrawLine(location.x-5, location.y, location.x+5, location.y);
     ofDrawLine(location.x, location.y-5, location.x, location.y+5);
-    if(soundProperties->getBool(paramBool)==true) ofDrawCircle(location.x,location.y,10);
+    if(soundProperties->getBool(paramBool)) ofDrawCircle(location.x,location.y,10);
     ofPopStyle();
 }
 

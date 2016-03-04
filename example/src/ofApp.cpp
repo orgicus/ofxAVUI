@@ -34,7 +34,7 @@ void ofApp::setup(){
     zones[1].addUI(pad2, 0.0, 0.33);
     ofxAVUIEmpty *empty1 = new ofxAVUIEmpty("POWER");
     zones[1].addUI(empty1, 0.33, 0.33);
-    ofxAVUISlider *slider1 = new ofxAVUISlider("Pitch\nSlider", "trigger", "pitch");
+    ofxAVUISlider *slider1 = new ofxAVUISlider("Pitch\nSlider", "pitch", "trigger");
     zones[1].addUI(slider1, 0.66, 0.34);
 
     //Zone 2

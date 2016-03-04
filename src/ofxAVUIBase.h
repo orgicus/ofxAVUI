@@ -15,7 +15,7 @@ class ofxAVUIBase {
 public:
     ofxAVUIBase();
     virtual ~ofxAVUIBase();
-    void setPosition(int _x, int _y, int _width, int _height);
+    virtual void setPosition(int _x, int _y, int _width, int _height);
     void setColor(ofColor _bgColor, ofColor _fgColor);
     void setTitle(string _title);
     void bindProperties(ofParameterGroup *_soundProperties);
