@@ -17,11 +17,13 @@
 class ofxAVUIZonePlayer {
     
     public:
+        ofxAVUIZonePlayer();
+        ~ofxAVUIZonePlayer();
         void setup(string _sound, int bufferSize);
         void trigger(float _speed, float _amplitude);
         void filter(float _val1, float _val2);
         void delay(float _val1, float _val2);
-        void play(int pos, double pan);
+        double play(int pos, double pan);
 
         void addSoundFx(ofxAVUISoundFxBase * _fxElement);
         void sendValue(string _param, float _val);

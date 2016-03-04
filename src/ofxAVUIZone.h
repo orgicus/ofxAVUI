@@ -10,12 +10,17 @@
 
 #include "ofMain.h"
 #include "ofxMaxim.h"
+
 #include "ofxAVUIBase.h"
 #include "ofxAVUIXYPad.h"
 #include "ofxAVUIButton.h"
 #include "ofxAVUIToggle.h"
 #include "ofxAVUILabel.h"
 #include "ofxAVUISlider.h"
+
+#include "ofxAVUIVisualBase.h"
+#include "ofxAVUIVisualWave.h"
+
 #include "ofxAVUIZonePlayer.h"
 #include "ofxAVUISoundFxBase.h"
 
@@ -48,6 +53,7 @@ public:
     //UI
     void addUI(ofxAVUIBase * _element, float _pctFromTop, float _pctHeight);
     void addSoundFx(ofxAVUISoundFxBase * _fxElement);
+    void addVisual(ofxAVUIVisualBase * _element, float _pctFromTop, float _pctHeight);
 
 private:
     bool                loaded;
@@ -69,8 +75,8 @@ private:
     ofParameter<bool>   delayOn;
     ofParameterGroup    soundProperties;
     
-    std::vector <ofxAVUIBase *> elements;   //UI elements
-
+    std::vector <ofxAVUIBase *> uis;
+    std::vector <ofxAVUIVisualBase *> visuals;
 };
 
 
