@@ -29,7 +29,8 @@ class ofxAVUIZone {
 public:
 	ofxAVUIZone();
 	~ofxAVUIZone();
-    ofxAVUIZone* setup(string _name, int _x, int _y, int _width, int _height, string _sound,
+    //zone is defined by position and width in pixels, the UI and visual elements are then stacked down from position
+    ofxAVUIZone* setup(string _name, int _x, int _y, int _width, string _sound,
                         ofColor _backgroundColor, ofColor _foregroundColor, int _bufferSize);
     void update();
     void draw();
@@ -52,7 +53,7 @@ public:
     void delayOnChanged(bool &_delayOn);
 
     //UI
-    void addUI(ofxAVUIBase * _element, float _pctFromTop, float _pctHeight);
+    void addUI(ofxAVUIBase * _element, float _pixelHeight);             //UI elements are stacked top->down
     void addSoundFx(ofxAVUISoundFxBase * _fxElement);
     void addVisual(ofxAVUIVisualBase * _element, float _pctFromTop, float _pctHeight);
 

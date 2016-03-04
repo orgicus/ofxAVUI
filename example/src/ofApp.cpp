@@ -20,27 +20,27 @@ void ofApp::setup(){
     
     //ofxAVUI setup
     //Zone 0
-    zones[0].setup("zone1", 100, 100, 200, 300, "sound.wav", ofColor(100,100,100, 0), ofColor(0,255,255, 255), bufferSize);
-    ofxAVUIXYPad *pad1 = new ofxAVUIXYPad("", "trigger", "volume", "pitch");
-    zones[0].addUI(pad1, 0.0, 0.33);
+    zones[0].setup("zone1", 100, 100, 200, "sound.wav", ofColor(100,100,100, 0), ofColor(0,255,255, 255), bufferSize);
+    ofxAVUIXYPad *pad1 = new ofxAVUIXYPad("Pad", "trigger", "volume", "pitch");
+    zones[0].addUI(pad1, 100);
     ofxAVUIToggle *toggle1 = new ofxAVUIToggle("Looping", "looping");
-    zones[0].addUI(toggle1, 0.33, 0.33);
-    ofxAVUIButton *button1 = new ofxAVUIButton("trigger", "trigger");
-    zones[0].addUI(button1, 0.66, 0.34);
+    zones[0].addUI(toggle1, 100);
+    ofxAVUIButton *button1 = new ofxAVUIButton("Trigger", "trigger");
+    zones[0].addUI(button1, 100);
 
     //Zone 1
-    zones[1].setup("zone2", 300, 100, 200, 300, "Low.wav", ofColor(100,100,100, 0), ofColor(255,255,0, 255), bufferSize);
-    ofxAVUIXYPad *pad2 = new ofxAVUIXYPad("PAD2", "trigger", "pitch", "volume");
-    zones[1].addUI(pad2, 0.0, 0.33);
-    ofxAVUIEmpty *empty1 = new ofxAVUIEmpty("POWER");
-    zones[1].addUI(empty1, 0.33, 0.33);
-    ofxAVUISlider *slider1 = new ofxAVUISlider("Pitch\nSlider", "pitch", "trigger");
-    zones[1].addUI(slider1, 0.66, 0.34);
+    zones[1].setup("zone2", 300, 100, 200, "Low.wav", ofColor(100,100,100, 0), ofColor(255,255,0, 255), bufferSize);
+    ofxAVUIXYPad *pad2 = new ofxAVUIXYPad("Pad", "trigger", "pitch", "volume");
+    zones[1].addUI(pad2, 100);
+    ofxAVUIEmpty *empty1 = new ofxAVUIEmpty("Empty");
+    zones[1].addUI(empty1, 100);
+    ofxAVUISlider *slider1 = new ofxAVUISlider("Slider", "pitch", "trigger");
+    zones[1].addUI(slider1, 100);
 
     //Zone 2
-    zones[2].setup("zone3", 500, 100, 200, 300, "synth.wav", ofColor(100,100,100, 0), ofColor(255,0,255, 255), bufferSize);
-    ofxAVUIXYPad *pad3 = new ofxAVUIXYPad("Pad3", "trigger", "pitch", "volume");
-    zones[2].addUI(pad3, 0.0, 0.33);
+    zones[2].setup("zone3", 500, 100, 200, "synth.wav", ofColor(100,100,100, 0), ofColor(255,0,255, 255), bufferSize);
+    ofxAVUIXYPad *pad3 = new ofxAVUIXYPad("Pad", "trigger", "pitch", "volume");
+    zones[2].addUI(pad3, 100);
     
     ofxAVUIVisualWave *visual1 = new ofxAVUIVisualWave();
     zones[2].addVisual(visual1, 0.0, 0.33);
@@ -49,15 +49,15 @@ void ofApp::setup(){
     filter1->setup("filter", false, "frequency", 200, 20000, 5000, "resonance", 0, 100, 50);
     zones[2].addSoundFx(filter1);
     
-    ofxAVUIXYPad *pad4 = new ofxAVUIXYPad("Filter", "filter", "frequency", "resonance");
-    zones[2].addUI(pad4, 0.33, 0.33);
+    ofxAVUIXYPad *pad4 = new ofxAVUIXYPad("Filter Pad", "filter", "frequency", "resonance");
+    zones[2].addUI(pad4, 100);
 
     ofxAVUISoundFxDelay *delay1 = new ofxAVUISoundFxDelay();
     delay1->setup("delay", false, "size", 10000, 40000, 20000, "feedback", 0.5, 0.75, 1.0);
     zones[2].addSoundFx(delay1);
     
-    ofxAVUIXYPad *pad5 = new ofxAVUIXYPad("DELAY", "delay", "size", "feedback");
-    zones[2].addUI(pad5, 0.66, 0.34);
+    ofxAVUIXYPad *pad5 = new ofxAVUIXYPad("Delay Pad", "delay", "size", "feedback");
+    zones[2].addUI(pad5, 100);
     
     
     //OF sound start

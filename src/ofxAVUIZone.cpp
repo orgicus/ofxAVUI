@@ -19,14 +19,14 @@ ofxAVUIZone::ofxAVUIZone() {
 ofxAVUIZone::~ofxAVUIZone() {
 }
 
-ofxAVUIZone* ofxAVUIZone::setup(string _name, int _x, int _y, int _width, int _height, string _sound,
+ofxAVUIZone* ofxAVUIZone::setup(string _name, int _x, int _y, int _width, string _sound,
                                 ofColor _backgroundColor, ofColor _foregroundColor, int _bufferSize) {
     ofSetCircleResolution(200);
     name = _name;
     shape.x = _x;
     shape.y = _y;
     shape.width = _width;
-    shape.height = _height;
+//    shape.height = _height;
     fgColor = _foregroundColor;
     bgColor = _backgroundColor;
     player.setup(ofToDataPath(_sound), _bufferSize);
@@ -107,9 +107,10 @@ double ofxAVUIZone::getOutput(int channel) {
 }
 
 
-void ofxAVUIZone::addUI(ofxAVUIBase * _element, float _pctFromTop, float _pctHeight) {
+void ofxAVUIZone::addUI(ofxAVUIBase * _element, float _pixelHeight) {
     uis.push_back(_element);
-	_element->setPosition(shape.x, shape.y + shape.height*_pctFromTop, shape.width, shape.height*_pctHeight);
+	_element->setPosition(shape.x, shape.y + shape.height, shape.width, _pixelHeight); //use previous zone height as new y pos
+    shape.height = shape.height + _pixelHeight; //update zone height
     _element->setColor(bgColor, fgColor);
     _element->bindProperties(&soundProperties);
 }
