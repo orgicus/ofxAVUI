@@ -122,10 +122,10 @@ void ofxAVUIZone::addUI(ofxAVUIBase * _element, float _pixelHeight) {
     _element->bindProperties(&soundProperties);
 }
 
-void ofxAVUIZone::addVisual(ofxAVUIVisualBase * _element, float _pctFromTop, float _pctHeight) {
+void ofxAVUIZone::addVisual(ofxAVUIVisualBase * _element) {
     visuals.push_back(_element);
     _element->setup(player.myBufferSize);
-	_element->setPosition(shape.x, shape.y + shape.height*_pctFromTop, shape.width, shape.height*_pctHeight);
+	_element->setPosition(shape.x, shape.y, shape.width, shape.height);
 }
 
 

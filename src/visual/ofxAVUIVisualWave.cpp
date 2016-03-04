@@ -16,19 +16,13 @@ void ofxAVUIVisualWave::draw(float * buffer, float amplitude){
     ofPushStyle();
     ofFill();
     ofSetColor(red,0,255, amplitude*255);
-    //ofSetLineWidth(1);
     for(int i=0; i<myBufferSize; i++){
-        float p = i / (float)(myBufferSize);
-        float y2 = buffer[i] * (shape.height);
-//        if(fullscreen){
-//            float x = p * ofGetWidth();
-//            float rectWidth=ofGetWidth()/myBufferSize;
-//            ofRect(x, posY+y1,rectWidth,posY+y2);
-//        }else{
-            float x = p * shape.width;
-            float rectWidth = shape.width/myBufferSize;
-            ofRect(shape.x + x, shape.y, rectWidth, shape.y + y2);
-//        }
+    float p = i / (float)(myBufferSize);
+    float y1 = shape.height/2;
+    float y2 = buffer[i] * (shape.height);
+        float x = p * shape.width;
+        float rectWidth = shape.width/myBufferSize;
+        ofDrawRectangle(shape.x + x, shape.y + y1, rectWidth, y2);
     }
     ofPopStyle();
 }
