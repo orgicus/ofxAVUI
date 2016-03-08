@@ -27,8 +27,8 @@ The example code is thoroughly commented, exemplifying the use of the different 
 ofxAVUI has been conceived by Nuno Correia under the Enabling AVUIs research project, which has been recipient of a EU Marie Curie fellowship, and hosted by EAVI, Goldsmiths, University of London. It has been developed by Borut Kumperščak and Nuno Correia. It is based on AVZones iOS app and inspired by Gen.AV projects.
 
 # Links
-Nuno
-Borut
-EAVI
-AVZones
-Gen.AV
+- Nuno Correia: http://www.nunocorreia.com
+- Borut Kumperščak: http://www.wirelesscowboy.org
+- EAVI, Goldsmiths, University of London: http://eavi.goldsmithsdigital.com
+- AVZones: http://www.avzones.org
+- Gen.AV: http://www.gen-av.org
