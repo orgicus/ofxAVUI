@@ -30,7 +30,7 @@ void ofApp::setup(){
     
     //always put visual last as the zone height is not fixed before
     ofxAVUIVisualWave *visual1 = new ofxAVUIVisualWave();
-    zones[0].addVisual(visual1);
+    zones[0].addVisual(visual1, ofColor(0,0,255));
 
     zones[0].updateParameters();
     
@@ -45,7 +45,7 @@ void ofApp::setup(){
     
     //always put visual last as the zone height is not fixed before
     ofxAVUIVisualBars *visual2 = new ofxAVUIVisualBars(5);
-    zones[1].addVisual(visual2);
+    zones[1].addVisual(visual2, ofColor(255,0,255));
 
     //Zone 2
     zones[2].setup("zone3", 500, 100, 200, "synth.wav", ofColor(100,100,100, 0), ofColor(255,0,255, 255), bufferSize);
@@ -68,7 +68,7 @@ void ofApp::setup(){
     
     //always put visual last as the zone height is not fixed before
     ofxAVUIVisualWave *visual3 = new ofxAVUIVisualWave();
-    zones[2].addVisual(visual3);
+    zones[2].addVisual(visual3, ofColor(0,255,255));
     
     //OF sound start
     ofSoundStreamSetup(2,2,this, sampleRate, bufferSize, 4); /* this has to happen at the end of setup - it switches on the DAC */
