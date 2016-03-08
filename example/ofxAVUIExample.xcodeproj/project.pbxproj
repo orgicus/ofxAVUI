@@ -207,12 +207,12 @@
 		3ED152751C89FFE300591B31 /* audio */ = {
 			isa = PBXGroup;
 			children = (
-				3ED152761C89FFE300591B31 /* ofxAVUISoundFxBase.cpp */,
 				3ED152771C89FFE300591B31 /* ofxAVUISoundFxBase.h */,
-				3ED152781C89FFE300591B31 /* ofxAVUISoundFxDelay.cpp */,
+				3ED152761C89FFE300591B31 /* ofxAVUISoundFxBase.cpp */,
 				3ED152791C89FFE300591B31 /* ofxAVUISoundFxDelay.h */,
-				3ED1527A1C89FFE300591B31 /* ofxAVUISoundFxFilter.cpp */,
+				3ED152781C89FFE300591B31 /* ofxAVUISoundFxDelay.cpp */,
 				3ED1527B1C89FFE300591B31 /* ofxAVUISoundFxFilter.h */,
+				3ED1527A1C89FFE300591B31 /* ofxAVUISoundFxFilter.cpp */,
 			);
 			path = audio;
 			sourceTree = "<group>";

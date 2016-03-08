@@ -20,8 +20,8 @@ ofxAVUIZone::ofxAVUIZone() {
 ofxAVUIZone::~ofxAVUIZone() {
 }
 
-ofxAVUIZone* ofxAVUIZone::setup(string _name, int _x, int _y, int _width, string _sound,
-                                ofColor _backgroundColor, ofColor _foregroundColor, int _bufferSize) {
+ofxAVUIZone* ofxAVUIZone::setup(string _name, int _x, int _y, int _width, ofColor _backgroundColor, ofColor _foregroundColor,
+                                string _sound, int _bufferSize) {
     ofSetCircleResolution(200);
     name = _name;
     shape.x = _x;

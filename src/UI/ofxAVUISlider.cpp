@@ -7,7 +7,7 @@
 
 #include "ofxAVUISlider.h"
 
-ofxAVUISlider::ofxAVUISlider(string _title, string _paramFloat, string _paramBoolTrigger, string _paramBoolToggle){
+ofxAVUISlider::ofxAVUISlider(string _title, string _paramBoolTrigger, string _paramBoolToggle, string _paramFloat){
     x = 0;
     dragging = false;
     clicking = false;
@@ -33,6 +33,7 @@ void ofxAVUISlider::update() {
     ofParameter<float>  p1 = soundProperties->getFloat(param1);
     float horizVal = ofMap(p1, p1.getMin(), p1.getMax(), shape.x, shape.x + shape.width);
     x = horizVal;
+    synced = true;
 }
 
 void ofxAVUISlider::draw(){
@@ -44,6 +45,7 @@ void ofxAVUISlider::draw(){
 //        p1 = horizVal;
 //        clicking = false;
 //    }
+    if (synced) update();
     ofPushStyle();
     ofSetColor(bgColor);
     ofDrawRectangle(0,0,shape.width,shape.height);

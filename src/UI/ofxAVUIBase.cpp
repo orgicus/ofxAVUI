@@ -9,6 +9,7 @@
 
 ofxAVUIBase::ofxAVUIBase(){
     ofRegisterMouseEvents(this, OF_EVENT_ORDER_BEFORE_APP);
+    synced = false;
 }
 
 ofxAVUIBase::~ofxAVUIBase(){

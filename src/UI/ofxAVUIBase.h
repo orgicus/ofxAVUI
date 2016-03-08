@@ -39,6 +39,7 @@ protected:
     ofColor             bgColor, fgColor;
     string              title;
     ofParameterGroup   *soundProperties;
+    bool                synced;
 };
 
 #endif /* ofxAVUIBase_h */

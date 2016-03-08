@@ -40,6 +40,7 @@ void ofxAVUIXYPad::update(){
     float vertVal = ofMap(py,  py.getMin(), py.getMax(), shape.y, shape.y + shape.height, true);
     location.x = horizVal;
     location.y = vertVal;
+    synced = true;
 }
 
 void ofxAVUIXYPad::draw(){
@@ -55,6 +56,7 @@ void ofxAVUIXYPad::draw(){
 //        py = vertVal;
 //        clicking = false;
 //    }
+    if (synced) update();
     ofPushStyle();
     ofSetColor(bgColor);
     ofDrawRectangle(0,0,shape.width,shape.height);

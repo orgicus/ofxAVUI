@@ -1,79 +1,89 @@
-// Based on Maximillian integration example, see https://github.com/micknoise/Maximilian/tree/master/openFrameworks
-
 #include "ofApp.h"
 
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    //housekeeping
+    //ENVIRONMENT AND MAXIMILIAN
     ofSetFrameRate(60);
     ofSetVerticalSync(true);
     ofEnableAlphaBlending();
     ofEnableSmoothing();
     ofBackground(0,0,0);
-    
-    //Maximillian setup
-    sampleRate 	= 44100; /* Sampling Rate */
-    bufferSize	= 512; /* Buffer Size. you have to fill this buffer with sound using the for loop in the audioOut method */
+    sampleRate 	= 44100; /* Audio sampling rate */
+    bufferSize	= 512; /* Audio buffer size */
     ofxMaxiSettings::setup(sampleRate, 2, bufferSize);
     
-    //ofxAVUI setup
-    //Zone 0
-    zones[0].setup("zone1", 50, 100, 200, "sound.wav", ofColor(100,100,100, 150), ofColor(0,255,255, 255), bufferSize);
-    ofxAVUIXYPad *pad1 = new ofxAVUIXYPad("Pad", "triggerPlay",  "toggleLooping", "volume", "pitch");
+    //ZONE 0 SETUP
+    //parameters: name, x, y, width, background color, foreground color, sound filename, sound buffer size
+    zones[0].setup("zone1", 50, 100, 200, ofColor(100,100,100, 150), ofColor(0,255,255, 255), "synth.wav", bufferSize);
+    //ZONE 0 UI
+    //pad parameters: caption, trigger (single tap) parameter name, toggle (double tap) parameter name, x parameter name, y parameter name
+    ofxAVUIXYPad *pad1 = new ofxAVUIXYPad("", "triggerPlay",  "toggleLooping", "volume", "pitch");
+    //pad additional parameter: height
     zones[0].addUI(pad1, 150);
+    //toggle parameters: caption, toggle (double tap) parameter name
     ofxAVUIToggle *toggle1 = new ofxAVUIToggle("Looping", "toggleLooping");
     zones[0].addUI(toggle1, 100);
-    ofxAVUIButton *button1 = new ofxAVUIButton("Trigger", "togglePlay");
+    //button parameters: caption, trigger (single tap) parameter name
+    ofxAVUIButton *button1 = new ofxAVUIButton("Trigger", "triggerPlay");
     zones[0].addUI(button1, 100);
-    
+    //ZONE 0 AUDIO EFFECTS
+    //empty
+    //ZONE 0 VISUALS
     ofxAVUIVisualWave *visual1 = new ofxAVUIVisualWave();
     zones[0].addVisual(visual1, ofColor(0,0,255));
 
-    //Zone 1
-    zones[1].setup("zone2", 300, 100, 150, "Low.wav", ofColor(100,100,100, 150), ofColor(255,255,0, 255), bufferSize);
+    //ZONE 1 SETUP
+    zones[1].setup("zone2", 325, 150, 150, ofColor(100,100,100, 150), ofColor(255,255,0, 255), "drumloop.wav", bufferSize);
+    //ZONE 1 UI
     ofxAVUIEmpty *empty1 = new ofxAVUIEmpty("Empty");
     zones[1].addUI(empty1, 50);
     ofxAVUIXYPad *pad2 = new ofxAVUIXYPad("Pad", "triggerPlay", "triggerPlay", "pitch", "volume");
     zones[1].addUI(pad2, 100);
-    ofxAVUIEmpty *empty2 = new ofxAVUIEmpty("Empty");
+    ofxAVUIEmpty *empty2 = new ofxAVUIEmpty("");
     zones[1].addUI(empty2, 75);
-    ofxAVUISlider *slider1 = new ofxAVUISlider("Slider", "pitch", "triggerPlay", "toggleLooping");
+    //slider parameters: caption, trigger (single tap) parameter name, toggle (double tap) parameter name, x parameter name
+    ofxAVUISlider *slider1 = new ofxAVUISlider("Slider", "triggerPlay", "toggleLooping", "pitch");
     zones[1].addUI(slider1, 100);
     ofxAVUIToggle *toggle2 = new ofxAVUIToggle("Looping", "toggleLooping");
     zones[1].addUI(toggle2, 50);
-    
+    //ZONE 1 AUDIO EFFECTS
+    //empty
+    //ZONE 1 VISUALS
     ofxAVUIVisualBars *visual2 = new ofxAVUIVisualBars(5);
-    zones[1].addVisual(visual2, ofColor(255,0,255));
+    zones[1].addVisual(visual2, ofColor(255,0,0));
 
-    //Zone 2
-    zones[2].setup("zone3", 550, 100, 200, "synth.wav", ofColor(100,100,100, 150), ofColor(255,0,255, 255), bufferSize);
+    //ZONE 2 SETUP
+    zones[2].setup("zone3", 550, 100, 200, ofColor(100,100,100, 150), ofColor(255,0,255, 255), "bass.wav", bufferSize);
+    //ZONE 2 UI
     ofxAVUIXYPad *pad3 = new ofxAVUIXYPad("Pad", "triggerPlay", "triggerPlay", "pitch", "volume");
     zones[2].addUI(pad3, 100);
-    
-    ofxAVUISoundFxFilter *filter1 = new ofxAVUISoundFxFilter();
-    filter1->setup("filterToggle", false, "frequency", 200, 20000, 200, "resonance", 0, 100, 10);
-    zones[2].addSoundFx(filter1);
-    
     ofxAVUIXYPad *pad4 = new ofxAVUIXYPad("Filter Pad", "filterTrigger", "filterToggle", "frequency", "resonance");
     zones[2].addUI(pad4, 100);
-
+    ofxAVUIToggle *toggle3 = new ofxAVUIToggle("Filter Toggle", "filterToggle");
+    zones[2].addUI(toggle3, 50);
+    ofxAVUIXYPad *pad5 = new ofxAVUIXYPad("Delay Pad", "delayTrigger", "delayToggle", "size", "feedback");
+    zones[2].addUI(pad5, 100);
+    ofxAVUIToggle *toggle4 = new ofxAVUIToggle("Delay Toggle", "delayToggle");
+    zones[2].addUI(toggle4, 50);
+    //ZONE 2 AUDIO EFFECTS
+    ofxAVUISoundFxFilter *filter1 = new ofxAVUISoundFxFilter();
+    //sound fx parameters:
+    //- filter enabled toggle name (will be linked to any toggle UI with same name), start value
+    //- 1st parameter float name (will be linked to any toggle UI with same name), min value, max value, start value
+    //- 2nd parameter float name (will be linked to any toggle UI with same name), min value, max value, start value
+    filter1->setup("filterToggle", false, "frequency", 200, 20000, 200, "resonance", 0, 100, 10);
+    zones[2].addSoundFx(filter1);
     ofxAVUISoundFxDelay *delay1 = new ofxAVUISoundFxDelay();
     delay1->setup("delayToggle", false, "size", 10000, 40000, 20000, "feedback", 0.5, 1.0, 0.75);
     zones[2].addSoundFx(delay1);
-    
-    ofxAVUIXYPad *pad5 = new ofxAVUIXYPad("Delay Pad", "delayTrigger", "delayToggle", "size", "feedback");
-    zones[2].addUI(pad5, 100);
-
-    ofxAVUIToggle *toggle3 = new ofxAVUIToggle("Delay Toggle", "delayToggle");
-    zones[2].addUI(toggle3, 50);
-    
+    //ZONE 2 VISUALS
     ofxAVUIVisualCircles *visual3 = new ofxAVUIVisualCircles(10);
     zones[2].addVisual(visual3, ofColor(0,255,0, 196));
 
-    //OF sound start
-    ofSoundStreamSetup(2,2,this, sampleRate, bufferSize, 4); /* this has to happen at the end of setup - it switches on the DAC */
+    //START SOUND
+    ofSoundStreamSetup(2,2,this, sampleRate, bufferSize, 4); /* this has to happen at the end of setup*/
     
 }
 
@@ -93,7 +103,7 @@ void ofApp::draw(){
     ofDrawLine(coordX, 0, coordX, ofGetHeight());
     ofDrawLine(0, coordY, ofGetWidth(), coordY);
 
-    //draw all the zones
+    //DRAW ZONES
     for (int k=0; k<3; k++) {
         zones[k].draw();
     }

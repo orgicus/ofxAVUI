@@ -32,8 +32,7 @@ public:
 	ofxAVUIZone();
 	~ofxAVUIZone();
     //zone is defined by position and width in pixels, the UI and visual elements are then stacked down from position
-    ofxAVUIZone* setup(string _name, int _x, int _y, int _width, string _sound,
-                        ofColor _backgroundColor, ofColor _foregroundColor, int _bufferSize);
+    ofxAVUIZone* setup(string _name, int _x, int _y, int _width, ofColor _backgroundColor, ofColor _foregroundColor, string _sound, int _bufferSize);
     void update();
     void draw();
     
