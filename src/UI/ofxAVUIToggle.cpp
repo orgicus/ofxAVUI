@@ -19,32 +19,32 @@ ofxAVUIToggle::~ofxAVUIToggle(){
 void ofxAVUIToggle::draw(){
     ofPushStyle();
     ofSetColor(bgColor);
-    ofDrawRectangle(shape);
+    ofDrawRectangle(0,0,shape.width,shape.height);
     ofSetColor(fgColor);
     drawContour();
     drawTitle();
-    ofSetColor(fgColor, 128);
+    ofSetColor(fgColor, 196);
     ofEnableAlphaBlending();
     (soundProperties->getBool(param1))? ofFill() : ofNoFill();
-    ofDrawCircle(shape.x + shape.width/2, shape.y + shape.height /2, shape.height /4) ;
+    ofDrawCircle(shape.width/2, shape.height /2, shape.height /4) ;
     ofDisableAlphaBlending();
     ofPopStyle();
 }
 
-bool ofxAVUIToggle::mouseMoved(ofMouseEventArgs & args) {
+void ofxAVUIToggle::mouseMoved(ofMouseEventArgs & args) {
 }
 
-bool ofxAVUIToggle::mousePressed(ofMouseEventArgs & args) {
+void ofxAVUIToggle::mousePressed(ofMouseEventArgs & args) {
     if (shape.inside(args.x, args.y)) {
         soundProperties->getBool(param1) = !soundProperties->getBool(param1);
     }
 }
 
-bool ofxAVUIToggle::mouseDragged(ofMouseEventArgs & args) {
+void ofxAVUIToggle::mouseDragged(ofMouseEventArgs & args) {
 }
 
-bool ofxAVUIToggle::mouseReleased(ofMouseEventArgs & args) {
+void ofxAVUIToggle::mouseReleased(ofMouseEventArgs & args) {
 }
 
-bool ofxAVUIToggle::mouseScrolled(ofMouseEventArgs & args) {
+void ofxAVUIToggle::mouseScrolled(ofMouseEventArgs & args) {
 }

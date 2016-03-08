@@ -16,6 +16,7 @@ public:
     ofxAVUIBase();
     virtual ~ofxAVUIBase();
     virtual void setPosition(int _x, int _y, int _width, int _height);
+    ofRectangle  getPosition();
     void setColor(ofColor _bgColor, ofColor _fgColor);
     void setTitle(string _title);
     void bindProperties(ofParameterGroup *_soundProperties);
@@ -24,11 +25,11 @@ public:
     virtual void update() {};
     virtual void draw() = 0;
     
-    virtual bool mouseMoved(ofMouseEventArgs & args) = 0;
-    virtual bool mousePressed(ofMouseEventArgs & args) = 0;
-    virtual bool mouseDragged(ofMouseEventArgs & args) = 0;
-    virtual bool mouseReleased(ofMouseEventArgs & args) = 0;
-    virtual bool mouseScrolled(ofMouseEventArgs & args) = 0;
+    virtual void mouseMoved(ofMouseEventArgs & args) = 0;
+    virtual void mousePressed(ofMouseEventArgs & args) = 0;
+    virtual void mouseDragged(ofMouseEventArgs & args) = 0;
+    virtual void mouseReleased(ofMouseEventArgs & args) = 0;
+    virtual void mouseScrolled(ofMouseEventArgs & args) = 0;
     virtual void mouseEntered(ofMouseEventArgs & args) {}
     virtual void mouseExited(ofMouseEventArgs & args) {}
 

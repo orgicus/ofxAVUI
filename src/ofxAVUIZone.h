@@ -68,7 +68,7 @@ private:
     string              name;
     ofxAVUIZonePlayer   player;
     ofColor             fgColor, bgColor;
-    
+    ofFbo               FBO;
     //properties
     ofParameter<char>       devNull; //we don't use first parameter in the group, as it is returned by parameterGroup->get(param1) whenever param1 doesn't match any of the parameter namess
     ofParameter<float>  pitch; //speed;

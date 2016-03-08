@@ -55,15 +55,10 @@ ofxAVUIZone* ofxAVUIZone::setup(string _name, int _x, int _y, int _width, string
 
 void ofxAVUIZone::addSoundFx(ofxAVUISoundFxBase * _fxElement) {
     player.addSoundFx(_fxElement);
-//    soundProperties.add(delayOn.set("delayToggle", false));
     soundProperties.add(*_fxElement->getParameter(0));
     soundProperties.add(*_fxElement->getParameter(1));
     soundProperties.add(*_fxElement->getToggle());
 }
-
-//void ofxAVUIZone::nullChanged(char & _null){
-//    cout << name << " null = " << _null << endl;
-//}
 
 void ofxAVUIZone::pitchChanged(float & _pitch){
     player.speed = _pitch;
@@ -91,20 +86,37 @@ void ofxAVUIZone::update() {
 
 void ofxAVUIZone::draw() {
     if (!synced) syncParameters();
-    ofPushStyle();
-    for(std::size_t i = 0; i < uis.size(); i++){
-        uis[i]->draw();
-    }
-    for(std::size_t i = 0; i < visuals.size(); i++){
-        if (loaded) visuals[i]->draw(player.buffer, player.amplitude);
-    }
-    ofPopStyle();
+    FBO.begin();
+        ofClear(255,255,255, 0);
+        ofPushStyle();
+        ofSetLineWidth(2);
+        int topDist = 0;
+        for(std::size_t i = 0; i < uis.size(); i++){
+            ofTranslate(0, topDist);
+            uis[i]->draw();
+            ofTranslate(0, -topDist);
+            topDist+=uis[i]->getPosition().height;
+        }
+        for(std::size_t i = 0; i < visuals.size(); i++){
+            if (loaded) visuals[i]->draw(player.buffer, player.amplitude);
+        }
+        ofPopStyle();
+    FBO.end();
+    FBO.draw(shape.x, shape.y);
 }
 
 void ofxAVUIZone::syncParameters() {
     for(std::size_t i = 0; i < uis.size(); i++){
         uis[i]->update();
     }
+    for(std::size_t i = 0; i < visuals.size(); i++){
+        visuals[i]->setPosition(shape.x, shape.y, shape.width, shape.height);   //needed if we add a visual first and then the UIs
+    }
+
+    FBO.allocate(shape.width, shape.height, GL_RGBA);    //doing this here so we do it just once
+//    FBO.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);    //doing this here so we do it just once
+
+    synced = true;
 }
 
 void ofxAVUIZone::play(int pos) {
@@ -121,9 +133,9 @@ double ofxAVUIZone::getOutput(int channel) {
 void ofxAVUIZone::addUI(ofxAVUIBase * _element, float _pixelHeight) {
     uis.push_back(_element);
 	_element->setPosition(shape.x, shape.y + shape.height, shape.width, _pixelHeight); //use previous zone height as new y pos
-    shape.height = shape.height + _pixelHeight; //update zone height
     _element->setColor(bgColor, fgColor);
     _element->bindProperties(&soundProperties);
+    shape.height = shape.height + _pixelHeight; //update zone height
 }
 
 void ofxAVUIZone::addVisual(ofxAVUIVisualBase * _element, ofColor visColor) {

@@ -19,27 +19,27 @@ ofxAVUIButton::~ofxAVUIButton(){
 void ofxAVUIButton::draw(){
     ofPushStyle();
     ofSetColor(bgColor);
-    ofDrawRectangle(shape);
+    ofDrawRectangle(0,0,shape.width,shape.height);
     ofSetColor(fgColor);
     drawContour();
     drawTitle();
     ofPopStyle();
 }
 
-bool ofxAVUIButton::mouseMoved(ofMouseEventArgs & args) {
+void ofxAVUIButton::mouseMoved(ofMouseEventArgs & args) {
 }
 
-bool ofxAVUIButton::mousePressed(ofMouseEventArgs & args) {
+void ofxAVUIButton::mousePressed(ofMouseEventArgs & args) {
     if (shape.inside(args.x, args.y)) {
         soundProperties->getBool(param1) = !soundProperties->getBool(param1);
     }
 }
 
-bool ofxAVUIButton::mouseDragged(ofMouseEventArgs & args) {
+void ofxAVUIButton::mouseDragged(ofMouseEventArgs & args) {
 }
 
-bool ofxAVUIButton::mouseReleased(ofMouseEventArgs & args) {
+void ofxAVUIButton::mouseReleased(ofMouseEventArgs & args) {
 }
 
-bool ofxAVUIButton::mouseScrolled(ofMouseEventArgs & args) {
+void ofxAVUIButton::mouseScrolled(ofMouseEventArgs & args) {
 }

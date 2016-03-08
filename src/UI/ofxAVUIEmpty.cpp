@@ -18,23 +18,23 @@ ofxAVUIEmpty::~ofxAVUIEmpty(){
 void ofxAVUIEmpty::draw(){
     ofPushStyle();
     ofSetColor(bgColor);
-    ofDrawRectangle(shape);
+    ofDrawRectangle(0,0,shape.width,shape.height);
     ofSetColor(fgColor);
     drawTitle();
     ofPopStyle();
 }
 
-bool ofxAVUIEmpty::mouseMoved(ofMouseEventArgs & args) {
+void ofxAVUIEmpty::mouseMoved(ofMouseEventArgs & args) {
 }
 
-bool ofxAVUIEmpty::mousePressed(ofMouseEventArgs & args) {
+void ofxAVUIEmpty::mousePressed(ofMouseEventArgs & args) {
 }
 
-bool ofxAVUIEmpty::mouseDragged(ofMouseEventArgs & args) {
+void ofxAVUIEmpty::mouseDragged(ofMouseEventArgs & args) {
 }
 
-bool ofxAVUIEmpty::mouseReleased(ofMouseEventArgs & args) {
+void ofxAVUIEmpty::mouseReleased(ofMouseEventArgs & args) {
 }
 
-bool ofxAVUIEmpty::mouseScrolled(ofMouseEventArgs & args) {
+void ofxAVUIEmpty::mouseScrolled(ofMouseEventArgs & args) {
 }

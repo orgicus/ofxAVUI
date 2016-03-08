@@ -18,11 +18,11 @@ public:
     ofxAVUIButton(string _title, string _paramBool);
     virtual ~ofxAVUIButton();
     
-    bool mouseMoved(ofMouseEventArgs & args);
-    bool mousePressed(ofMouseEventArgs & args);
-    bool mouseDragged(ofMouseEventArgs & args);
-    bool mouseReleased(ofMouseEventArgs & args);
-    bool mouseScrolled(ofMouseEventArgs & args);
+    void mouseMoved(ofMouseEventArgs & args);
+    void mousePressed(ofMouseEventArgs & args);
+    void mouseDragged(ofMouseEventArgs & args);
+    void mouseReleased(ofMouseEventArgs & args);
+    void mouseScrolled(ofMouseEventArgs & args);
 
     void draw();
 

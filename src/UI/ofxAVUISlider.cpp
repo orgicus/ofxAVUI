@@ -45,24 +45,24 @@ void ofxAVUISlider::draw(){
 //    }
     ofPushStyle();
     ofSetColor(bgColor);
-    ofDrawRectangle(shape);
+    ofDrawRectangle(0,0,shape.width,shape.height);
     ofSetColor(fgColor);
     ofNoFill();
     drawContour();
     drawTitle();
-    ofDrawLine(x, shape.y, x, shape.y + shape.height);  //cursor
-    if(soundProperties->getBool(paramBool)) ofDrawCircle(x,shape.y + shape.height/2,10);
+    ofDrawLine(x-shape.x, 0, x-shape.x, shape.height);  //cursor
+    if(soundProperties->getBool(paramBool)) ofDrawCircle(x - shape.x, shape.height/2,10);
     ofPopStyle();
 }
 
-bool ofxAVUISlider::mouseMoved(ofMouseEventArgs & args) {
+void ofxAVUISlider::mouseMoved(ofMouseEventArgs & args) {
 }
 
-bool ofxAVUISlider::mousePressed(ofMouseEventArgs & args) {
+void ofxAVUISlider::mousePressed(ofMouseEventArgs & args) {
     dragging = false;
 }
 
-bool ofxAVUISlider::mouseDragged(ofMouseEventArgs & args) {
+void ofxAVUISlider::mouseDragged(ofMouseEventArgs & args) {
     if (shape.inside(args.x, args.y)) {
         dragging = true;
         x = args.x;
@@ -72,7 +72,7 @@ bool ofxAVUISlider::mouseDragged(ofMouseEventArgs & args) {
     }
 }
 
-bool ofxAVUISlider::mouseReleased(ofMouseEventArgs & args) {
+void ofxAVUISlider::mouseReleased(ofMouseEventArgs & args) {
     if (shape.inside(args.x, args.y)) {
 //        if (ofGetElapsedTimeMillis() - doubleClickTimer <= DOUBLECLICK_MILLIS) {
 //            if (!dragging) soundProperties->getBool(paramBool) = !soundProperties->getBool(paramBool);    //no toggle
@@ -91,5 +91,5 @@ bool ofxAVUISlider::mouseReleased(ofMouseEventArgs & args) {
     }
 }
 
-bool ofxAVUISlider::mouseScrolled(ofMouseEventArgs & args) {
+void ofxAVUISlider::mouseScrolled(ofMouseEventArgs & args) {
 }

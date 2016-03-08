@@ -20,11 +20,11 @@ public:
     virtual ~ofxAVUISlider();
     virtual void setPosition(int _x, int _y, int _width, int _height);   //polymorhing so we can set the starting position for cursor
 
-    bool mouseMoved(ofMouseEventArgs & args);
-    bool mousePressed(ofMouseEventArgs & args);
-    bool mouseDragged(ofMouseEventArgs & args);
-    bool mouseReleased(ofMouseEventArgs & args);
-    bool mouseScrolled(ofMouseEventArgs & args);
+    void mouseMoved(ofMouseEventArgs & args);
+    void mousePressed(ofMouseEventArgs & args);
+    void mouseDragged(ofMouseEventArgs & args);
+    void mouseReleased(ofMouseEventArgs & args);
+    void mouseScrolled(ofMouseEventArgs & args);
 
     void update();  //set UI state based on parameters
     void draw();

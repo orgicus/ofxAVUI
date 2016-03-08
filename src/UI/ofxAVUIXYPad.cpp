@@ -56,26 +56,26 @@ void ofxAVUIXYPad::draw(){
 //    }
     ofPushStyle();
     ofSetColor(bgColor);
-    ofDrawRectangle(shape);
+    ofDrawRectangle(0,0,shape.width,shape.height);
     ofSetColor(fgColor);
     ofNoFill();
     drawContour();
     drawTitle();
-    ofDrawLine(location.x-5, location.y, location.x+5, location.y);
-    ofDrawLine(location.x, location.y-5, location.x, location.y+5);
-    if(soundProperties->getBool(paramBool)) ofDrawCircle(location.x,location.y,10);
+    ofDrawLine(location.x-shape.x-5, location.y-shape.y, location.x-shape.x+5, location.y-shape.y);
+    ofDrawLine(location.x-shape.x, location.y-shape.y-5, location.x-shape.x, location.y-shape.y+5);
+    if(soundProperties->getBool(paramBool)) ofDrawCircle(location.x-shape.x,location.y-shape.y,10);
     ofPopStyle();
 }
 
 
-bool ofxAVUIXYPad::mouseMoved(ofMouseEventArgs & args) {
+void ofxAVUIXYPad::mouseMoved(ofMouseEventArgs & args) {
 }
 
-bool ofxAVUIXYPad::mousePressed(ofMouseEventArgs & args) {
+void ofxAVUIXYPad::mousePressed(ofMouseEventArgs & args) {
     dragging = false;
 }
 
-bool ofxAVUIXYPad::mouseDragged(ofMouseEventArgs & args) {
+void ofxAVUIXYPad::mouseDragged(ofMouseEventArgs & args) {
     if (shape.inside(args.x, args.y)) {
         dragging = true;
         location.x = args.x;
@@ -89,7 +89,7 @@ bool ofxAVUIXYPad::mouseDragged(ofMouseEventArgs & args) {
     }
 }
 
-bool ofxAVUIXYPad::mouseReleased(ofMouseEventArgs & args) {
+void ofxAVUIXYPad::mouseReleased(ofMouseEventArgs & args) {
     if (shape.inside(args.x, args.y)) {
 //        if (ofGetElapsedTimeMillis() - doubleClickTimer <= DOUBLECLICK_MILLIS) {
 //            if (!dragging) soundProperties->getBool(paramBool) = !soundProperties->getBool(paramBool);    //no toggle
@@ -112,5 +112,5 @@ bool ofxAVUIXYPad::mouseReleased(ofMouseEventArgs & args) {
     }
 }
 
-bool ofxAVUIXYPad::mouseScrolled(ofMouseEventArgs & args) {
+void ofxAVUIXYPad::mouseScrolled(ofMouseEventArgs & args) {
 }

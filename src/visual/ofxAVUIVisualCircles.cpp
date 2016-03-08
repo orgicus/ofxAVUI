@@ -22,7 +22,7 @@ void ofxAVUIVisualCircles::draw(float * buffer, float amplitude){
         float y2 = buffer[bufferSlice*i] * (shape.height);
         float circleSpacing = shape.width/numCircles;
         float x = i*circleSpacing+circleSpacing/2;
-        ofDrawCircle(shape.x + x, shape.y+ y1, y2);
+        ofDrawCircle(x, y1, y2);
     }
     ofPopStyle();
 }

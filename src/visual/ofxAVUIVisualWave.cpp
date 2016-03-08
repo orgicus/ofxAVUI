@@ -21,7 +21,7 @@ void ofxAVUIVisualWave::draw(float * buffer, float amplitude){
     float y2 = buffer[i] * (shape.height);
         float x = p * shape.width;
         float rectWidth = shape.width/myBufferSize;
-        ofDrawRectangle(shape.x + x, shape.y + y1, rectWidth, y2);
+        ofDrawRectangle(x, y1, rectWidth, y2);
     }
     ofPopStyle();
 }

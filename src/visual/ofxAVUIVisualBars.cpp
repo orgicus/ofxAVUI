@@ -22,7 +22,7 @@ void ofxAVUIVisualBars::draw(float * buffer, float amplitude){
         float y2 = buffer[bufferSlice*i] * (shape.height);
         float rectWidth = shape.width/numRects;
         float x = i*rectWidth;
-        ofDrawRectangle((shape.x + x), shape.y + y1, rectWidth, y2);
+        ofDrawRectangle(x, y1, rectWidth, y2);
     }
     ofPopStyle();
 }
