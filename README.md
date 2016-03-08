@@ -22,11 +22,13 @@ The example code is thoroughly commented, exemplifying the use of the different 
 
 # Acknowledgements
 
-ofxAVUI has been conceived by Nuno Correia under the Enabling AVUIs research project, which has been recipient of a EU Marie Curie fellowship, and hosted by EAVI, Goldsmiths, University of London. It has been developed by Borut Kumperščak and Nuno Correia. It is based on AVZones iOS app and inspired by Gen.AV projects.
+ofxAVUI has been conceived by Nuno Correia under the Enabling AVUIs research project, which has been recipient of a EU Marie Curie fellowship, and hosted by EAVI, Goldsmiths, University of London. It has been developed by Borut Kumperščak and Nuno Correia. It is based on AVZones iOS app and inspired by Gen.AV projects. It relies on openFrameworks and Maximilian.
 
-# Links
+Links:
 - Nuno Correia: http://www.nunocorreia.com
 - Borut Kumperščak: http://www.wirelesscowboy.org
 - EAVI, Goldsmiths, University of London: http://eavi.goldsmithsdigital.com
 - AVZones: http://www.avzones.org
 - Gen.AV: http://www.gen-av.org
+- openFramewords: http://www.openframeworks.cc
+- Maximilian: https://github.com/micknoise/Maximilian
