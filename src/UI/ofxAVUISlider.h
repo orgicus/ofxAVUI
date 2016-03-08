@@ -26,6 +26,7 @@ public:
     bool mouseReleased(ofMouseEventArgs & args);
     bool mouseScrolled(ofMouseEventArgs & args);
 
+    void update();  //set UI state based on parameters
     void draw();
 
 private:

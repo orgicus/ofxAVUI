@@ -32,8 +32,17 @@ void ofxAVUIXYPad::setPosition(int _x, int _y, int _width, int _height) {
     location.y = _y + _height/2;
 }
 
+void ofxAVUIXYPad::update(){
+    ofParameter<float>  px = soundProperties->getFloat(paramX);
+    ofParameter<float>  py = soundProperties->getFloat(paramY);
+    float horizVal = ofMap(px, px.getMin(), px.getMax(), shape.x, shape.x + shape.width, true);
+    float vertVal = ofMap(py,  py.getMin(), py.getMax(), shape.y, shape.y + shape.height, true);
+    location.x = horizVal;
+    location.y = vertVal;
+}
+
 void ofxAVUIXYPad::draw(){
-//this is here as we dont call update()
+//this is here so we dont need to call update() every cycle
 //    if (clicking && (ofGetElapsedTimeMillis() - doubleClickTimer > DOUBLECLICK_MILLIS)) {
 //        location.x = mouseArgs.x;
 //        location.y = mouseArgs.y;

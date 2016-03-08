@@ -26,11 +26,11 @@ public:
     bool mouseDragged(ofMouseEventArgs & args);
     bool mouseReleased(ofMouseEventArgs & args);
     bool mouseScrolled(ofMouseEventArgs & args);
-
-    void noDoubleClick(ofMouseEventArgs & args);
-private:
+    
+    void update();
     void draw();
 
+private:
     float            savedX, savedY;
     float            savedHorizVal, savedVertVal;
     ofRectangle      location;

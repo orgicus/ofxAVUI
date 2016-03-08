@@ -32,8 +32,6 @@ void ofApp::setup(){
     ofxAVUIVisualWave *visual1 = new ofxAVUIVisualWave();
     zones[0].addVisual(visual1, ofColor(0,0,255));
 
-    zones[0].updateParameters();
-    
     //Zone 1
     zones[1].setup("zone2", 300, 100, 200, "Low.wav", ofColor(100,100,100, 0), ofColor(255,255,0, 255), bufferSize);
     ofxAVUIXYPad *pad2 = new ofxAVUIXYPad("Pad", "triggerPlay", "pitch", "volume");
@@ -53,14 +51,14 @@ void ofApp::setup(){
     zones[2].addUI(pad3, 100);
     
     ofxAVUISoundFxFilter *filter1 = new ofxAVUISoundFxFilter();
-    filter1->setup("filter", false, "frequency", 200, 20000, 5000, "resonance", 0, 100, 50);
+    filter1->setup("filter", false, "frequency", 200, 20000, 200, "resonance", 0, 100, 10);
     zones[2].addSoundFx(filter1);
     
     ofxAVUIXYPad *pad4 = new ofxAVUIXYPad("Filter Pad", "filter", "frequency", "resonance");
     zones[2].addUI(pad4, 100);
 
     ofxAVUISoundFxDelay *delay1 = new ofxAVUISoundFxDelay();
-    delay1->setup("delay", false, "size", 10000, 40000, 20000, "feedback", 0.5, 0.75, 1.0);
+    delay1->setup("delay", false, "size", 10000, 40000, 20000, "feedback", 0.5, 1.0, 0.75);
     zones[2].addSoundFx(delay1);
     
     ofxAVUIXYPad *pad5 = new ofxAVUIXYPad("Delay Pad", "delay", "size", "feedback");
@@ -69,7 +67,7 @@ void ofApp::setup(){
     //always put visual last as the zone height is not fixed before
     ofxAVUIVisualWave *visual3 = new ofxAVUIVisualWave();
     zones[2].addVisual(visual3, ofColor(0,255,255));
-    
+
     //OF sound start
     ofSoundStreamSetup(2,2,this, sampleRate, bufferSize, 4); /* this has to happen at the end of setup - it switches on the DAC */
     

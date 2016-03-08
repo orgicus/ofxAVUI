@@ -21,6 +21,7 @@ public:
     void bindProperties(ofParameterGroup *_soundProperties);
     void drawContour(); //specific ofxAVUI contour shape
     void drawTitle();
+    virtual void update() {};
     virtual void draw() = 0;
     
     virtual bool mouseMoved(ofMouseEventArgs & args) = 0;

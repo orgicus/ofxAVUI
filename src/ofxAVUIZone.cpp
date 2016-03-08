@@ -14,6 +14,7 @@ ofxAVUIZone::ofxAVUIZone() {
     shape.width = 0;
     shape.height = 0;
     loaded = false;
+    synced = false;
 }
 
 ofxAVUIZone::~ofxAVUIZone() {
@@ -89,26 +90,26 @@ void ofxAVUIZone::update() {
 }
 
 void ofxAVUIZone::draw() {
+    if (!synced) syncParameters();
     ofPushStyle();
     for(std::size_t i = 0; i < uis.size(); i++){
         uis[i]->draw();
     }
     for(std::size_t i = 0; i < visuals.size(); i++){
-        visuals[i]->draw(player.buffer, player.amplitude);
+        if (loaded) visuals[i]->draw(player.buffer, player.amplitude);
     }
     ofPopStyle();
 }
 
-void ofxAVUIZone::updateParameters() {
-    
+void ofxAVUIZone::syncParameters() {
+    for(std::size_t i = 0; i < uis.size(); i++){
+        uis[i]->update();
+    }
 }
 
 void ofxAVUIZone::play(int pos) {
     if (loaded) {
         double sample = player.play(pos, 0.5);
-//        for(std::size_t i = 0; i < visuals.size(); i++){
-//            visuals[i]->compute(pos, sample);
-//        }
     }
 }
 

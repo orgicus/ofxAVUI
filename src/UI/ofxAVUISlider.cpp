@@ -28,8 +28,14 @@ void ofxAVUISlider::setPosition(int _x, int _y, int _width, int _height) {
     x = _x + _width/2;
 }
 
+void ofxAVUISlider::update() {
+    ofParameter<float>  p1 = soundProperties->getFloat(param1);
+    float horizVal = ofMap(p1, p1.getMin(), p1.getMax(), shape.x, shape.x + shape.width);
+    x = horizVal;
+}
+
 void ofxAVUISlider::draw(){
-//this is here as we dont call update()
+//this is here so we dont need to call update() every cycle
 //    if (clicking && (ofGetElapsedTimeMillis() - doubleClickTimer > DOUBLECLICK_MILLIS)) {
 //        x = mouseArgs.x;
 //        ofParameter<float>  p1 = soundProperties->getFloat(param1);
