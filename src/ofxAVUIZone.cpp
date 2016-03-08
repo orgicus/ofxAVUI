@@ -99,6 +99,10 @@ void ofxAVUIZone::draw() {
     ofPopStyle();
 }
 
+void ofxAVUIZone::updateParameters() {
+    
+}
+
 void ofxAVUIZone::play(int pos) {
     if (loaded) {
         double sample = player.play(pos, 0.5);

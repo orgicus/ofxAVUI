@@ -32,7 +32,7 @@ void ofApp::setup(){
     ofxAVUIVisualWave *visual1 = new ofxAVUIVisualWave();
     zones[0].addVisual(visual1);
 
-    //zones[0].updateParameters();  //TODO: update UI position to routed soundFx parameters
+    zones[0].updateParameters();
     
     //Zone 1
     zones[1].setup("zone2", 300, 100, 200, "Low.wav", ofColor(100,100,100, 0), ofColor(255,255,0, 255), bufferSize);
