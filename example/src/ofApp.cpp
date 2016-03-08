@@ -25,8 +25,8 @@ void ofApp::setup(){
     zones[0].addUI(pad1, 100);
     ofxAVUIToggle *toggle1 = new ofxAVUIToggle("Looping", "looping");
     zones[0].addUI(toggle1, 100);
-//    ofxAVUIButton *button1 = new ofxAVUIButton("Trigger", "trigger");
-//    zones[0].addUI(button1, 100);
+    ofxAVUIButton *button1 = new ofxAVUIButton("Trigger", "trigger");
+    zones[0].addUI(button1, 100);
     
     //always put visual last as the zone height is not fixed before
     ofxAVUIVisualWave *visual1 = new ofxAVUIVisualWave();
