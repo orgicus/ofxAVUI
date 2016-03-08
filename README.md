@@ -1,6 +1,6 @@
 # ofxAVUI
 
-ofxAVUI is an openFrameworks add-on that enables the creation of user interfaces (UI) with integrated sound and visual feedback. Different UI elements are combined into a UI “zone”. Each zone has a sound and a sound visualisation, which respond to changes in the UI. Multiple zones can be created and added to a zone. At the moment, the add-on contains the following UI elements:
+ofxAVUI is an [openFrameworks](http://www.openframeworks.cc) add-on that enables the creation of user interfaces (UI) with integrated sound and visual feedback. Different UI elements are combined into a UI “zone”. Each zone has a sound and a sound visualisation, which respond to changes in the UI. Multiple zones can be created and added to a zone. At the moment, the add-on contains the following UI elements:
 - Button
 - Toggle
 - Slider
@@ -19,8 +19,6 @@ Link: https://github.com/micknoise/Maximilian/tree/master/openFrameworks
 # Example
 
 The example code is thoroughly commented, exemplifying the use of the different UI elements, audio effects and types of visuals. Usage of UI data outside of a zone is also exemplified.
-
-# License
 
 # Acknowledgements
 
