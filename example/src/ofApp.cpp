@@ -21,11 +21,11 @@ void ofApp::setup(){
     //ofxAVUI setup
     //Zone 0
     zones[0].setup("zone1", 100, 100, 200, "sound.wav", ofColor(100,100,100, 0), ofColor(0,255,255, 255), bufferSize);
-    ofxAVUIXYPad *pad1 = new ofxAVUIXYPad("Pad", "togglePlay", "volume", "pitch");
+    ofxAVUIXYPad *pad1 = new ofxAVUIXYPad("Pad", "triggerPlay", "volume", "pitch");
     zones[0].addUI(pad1, 100);
-    ofxAVUIToggle *toggle1 = new ofxAVUIToggle("Looping", "looping");
+    ofxAVUIToggle *toggle1 = new ofxAVUIToggle("Looping", "toggleLooping");
     zones[0].addUI(toggle1, 100);
-    ofxAVUIButton *button1 = new ofxAVUIButton("Trigger", "trigger");
+    ofxAVUIButton *button1 = new ofxAVUIButton("Trigger", "togglePlay");
     zones[0].addUI(button1, 100);
     
     //always put visual last as the zone height is not fixed before
@@ -36,11 +36,11 @@ void ofApp::setup(){
     
     //Zone 1
     zones[1].setup("zone2", 300, 100, 200, "Low.wav", ofColor(100,100,100, 0), ofColor(255,255,0, 255), bufferSize);
-    ofxAVUIXYPad *pad2 = new ofxAVUIXYPad("Pad", "trigger", "pitch", "volume");
+    ofxAVUIXYPad *pad2 = new ofxAVUIXYPad("Pad", "triggerPlay", "pitch", "volume");
     zones[1].addUI(pad2, 100);
     ofxAVUIEmpty *empty1 = new ofxAVUIEmpty("Empty");
     zones[1].addUI(empty1, 100);
-    ofxAVUISlider *slider1 = new ofxAVUISlider("Slider", "pitch", "trigger");
+    ofxAVUISlider *slider1 = new ofxAVUISlider("Slider", "pitch", "triggerPlay");
     zones[1].addUI(slider1, 100);
     
     //always put visual last as the zone height is not fixed before
@@ -49,7 +49,7 @@ void ofApp::setup(){
 
     //Zone 2
     zones[2].setup("zone3", 500, 100, 200, "synth.wav", ofColor(100,100,100, 0), ofColor(255,0,255, 255), bufferSize);
-    ofxAVUIXYPad *pad3 = new ofxAVUIXYPad("Pad", "trigger", "pitch", "volume");
+    ofxAVUIXYPad *pad3 = new ofxAVUIXYPad("Pad", "triggerPlay", "pitch", "volume");
     zones[2].addUI(pad3, 100);
     
     ofxAVUISoundFxFilter *filter1 = new ofxAVUISoundFxFilter();

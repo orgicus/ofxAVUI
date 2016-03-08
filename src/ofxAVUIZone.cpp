@@ -30,24 +30,23 @@ ofxAVUIZone* ofxAVUIZone::setup(string _name, int _x, int _y, int _width, string
     fgColor = _foregroundColor;
     bgColor = _backgroundColor;
     player.setup(ofToDataPath(_sound), _bufferSize);
-    player.looping = true;
-
+    
     soundProperties.add(devNull.set("null", 1.0, 0.0, 2.0));
 //    devNull.addListener(this,&ofxAVUIZone::nullChanged);
 
-    soundProperties.add(pitch.set("pitch", 1.0, 0.0, 2.0));
+    soundProperties.add(pitch.set("pitch", player.speed, 0.0, 2.0));
     pitch.addListener(this,&ofxAVUIZone::pitchChanged);
 
-    soundProperties.add(volume.set("volume", 1.0, 0.0, 2.0));
+    soundProperties.add(volume.set("volume", player.amplitude, 0.0, 2.0));
     volume.addListener(this,&ofxAVUIZone::volumeChanged);
 
-    soundProperties.add(looping.set("looping", true));
+    soundProperties.add(looping.set("toggleLooping", player.looping));
     looping.addListener(this,&ofxAVUIZone::loopingChanged);
 
-    soundProperties.add(trigger.set("trigger", true));
+    soundProperties.add(trigger.set("triggerPlay", false));
     trigger.addListener(this,&ofxAVUIZone::triggerReceived);
 
-    soundProperties.add(toggle.set("togglePlay", true));
+    soundProperties.add(toggle.set("togglePlay", false));
     toggle.addListener(this,&ofxAVUIZone::toggleReceived);
 
     loaded = true;

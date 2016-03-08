@@ -33,17 +33,18 @@ void ofxAVUIXYPad::setPosition(int _x, int _y, int _width, int _height) {
 }
 
 void ofxAVUIXYPad::draw(){
-    if (clicking && (ofGetElapsedTimeMillis() - doubleClickTimer > DOUBLECLICK_MILLIS)) {
-        location.x = mouseArgs.x;
-        location.y = mouseArgs.y;
-        ofParameter<float>  px = soundProperties->getFloat(paramX);
-        ofParameter<float>  py = soundProperties->getFloat(paramY);
-        float horizVal = ofMap(location.x, shape.x, shape.x + shape.width, px.getMin(), px.getMax());
-        float vertVal = ofMap(location.y, shape.y, shape.y + shape.height, py.getMin(), py.getMax());
-        px = horizVal;
-        py = vertVal;
-        clicking = false;
-    }
+//this is here as we dont call update()
+//    if (clicking && (ofGetElapsedTimeMillis() - doubleClickTimer > DOUBLECLICK_MILLIS)) {
+//        location.x = mouseArgs.x;
+//        location.y = mouseArgs.y;
+//        ofParameter<float>  px = soundProperties->getFloat(paramX);
+//        ofParameter<float>  py = soundProperties->getFloat(paramY);
+//        float horizVal = ofMap(location.x, shape.x, shape.x + shape.width, px.getMin(), px.getMax());
+//        float vertVal = ofMap(location.y, shape.y, shape.y + shape.height, py.getMin(), py.getMax());
+//        px = horizVal;
+//        py = vertVal;
+//        clicking = false;
+//    }
     ofPushStyle();
     ofSetColor(bgColor);
     ofDrawRectangle(shape);
@@ -81,14 +82,23 @@ bool ofxAVUIXYPad::mouseDragged(ofMouseEventArgs & args) {
 
 bool ofxAVUIXYPad::mouseReleased(ofMouseEventArgs & args) {
     if (shape.inside(args.x, args.y)) {
-        if (ofGetElapsedTimeMillis() - doubleClickTimer <= DOUBLECLICK_MILLIS) {
-            soundProperties->getBool(paramBool) = !soundProperties->getBool(paramBool);
-            clicking = false;
-        } else {
-            doubleClickTimer = ofGetElapsedTimeMillis();
-            clicking = true;
-            mouseArgs = args;
-        }
+//        if (ofGetElapsedTimeMillis() - doubleClickTimer <= DOUBLECLICK_MILLIS) {
+//            if (!dragging) soundProperties->getBool(paramBool) = !soundProperties->getBool(paramBool);    //no toggle
+            if (!dragging) soundProperties->getBool(paramBool) = true;                                      //just trigger
+            location.x = args.x;
+            location.y = args.y;
+            ofParameter<float>  px = soundProperties->getFloat(paramX);
+            ofParameter<float>  py = soundProperties->getFloat(paramY);
+            float horizVal = ofMap(args.x, shape.x, shape.x + shape.width, px.getMin(), px.getMax());
+            float vertVal = ofMap(args.y, shape.y, shape.y + shape.height, py.getMin(), py.getMax());
+            px = horizVal;
+            py = vertVal;
+//            clicking = false;
+//        } else {
+//            doubleClickTimer = ofGetElapsedTimeMillis();
+//            clicking = true;
+//            mouseArgs = args;
+//        }
         dragging = false;
     }
 }

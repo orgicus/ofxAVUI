@@ -75,10 +75,10 @@ private:
     ofParameter<bool>   toggle;
     ofParameter<float>  frequency;
     ofParameter<float>  resonance;
-    ofParameter<bool>   filterOn;
+//    ofParameter<bool>   filterOn;
     ofParameter<float>  size;
     ofParameter<float>  feedback;
-    ofParameter<bool>   delayOn;
+//    ofParameter<bool>   delayOn;
     ofParameterGroup    soundProperties;
     
     std::vector <ofxAVUIBase *> uis;

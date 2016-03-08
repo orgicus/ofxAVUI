@@ -29,13 +29,14 @@ void ofxAVUISlider::setPosition(int _x, int _y, int _width, int _height) {
 }
 
 void ofxAVUISlider::draw(){
-    if (clicking && (ofGetElapsedTimeMillis() - doubleClickTimer > DOUBLECLICK_MILLIS)) {
-        x = mouseArgs.x;
-        ofParameter<float>  p1 = soundProperties->getFloat(param1);
-        float horizVal = ofMap(x, shape.x, shape.x + shape.width, p1.getMin(), p1.getMax());
-        p1 = horizVal;
-        clicking = false;
-    }
+//this is here as we dont call update()
+//    if (clicking && (ofGetElapsedTimeMillis() - doubleClickTimer > DOUBLECLICK_MILLIS)) {
+//        x = mouseArgs.x;
+//        ofParameter<float>  p1 = soundProperties->getFloat(param1);
+//        float horizVal = ofMap(x, shape.x, shape.x + shape.width, p1.getMin(), p1.getMax());
+//        p1 = horizVal;
+//        clicking = false;
+//    }
     ofPushStyle();
     ofSetColor(bgColor);
     ofDrawRectangle(shape);
@@ -67,14 +68,19 @@ bool ofxAVUISlider::mouseDragged(ofMouseEventArgs & args) {
 
 bool ofxAVUISlider::mouseReleased(ofMouseEventArgs & args) {
     if (shape.inside(args.x, args.y)) {
-        if (ofGetElapsedTimeMillis() - doubleClickTimer <= DOUBLECLICK_MILLIS) {
-            soundProperties->getBool(paramBool) = !soundProperties->getBool(paramBool);
-            clicking = false;
-        } else {
-            doubleClickTimer = ofGetElapsedTimeMillis();
-            clicking = true;
-            mouseArgs = args;
-        }
+//        if (ofGetElapsedTimeMillis() - doubleClickTimer <= DOUBLECLICK_MILLIS) {
+//            if (!dragging) soundProperties->getBool(paramBool) = !soundProperties->getBool(paramBool);    //no toggle
+            if (!dragging) soundProperties->getBool(paramBool) = true;                                      //just trigger
+            x = args.x;
+            ofParameter<float>  p1 = soundProperties->getFloat(param1);
+            float horizVal = ofMap(args.x, shape.x, shape.x + shape.width, p1.getMin(), p1.getMax());
+            p1 = horizVal;
+//            clicking = false;
+//        } else {
+//            doubleClickTimer = ofGetElapsedTimeMillis();
+//            clicking = true;
+//            mouseArgs = args;
+//        }
         dragging = false;
     }
 }
