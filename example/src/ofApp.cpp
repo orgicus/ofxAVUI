@@ -67,8 +67,8 @@ void ofApp::setup(){
     zones[2].addUI(pad5, 100);
     
     //always put visual last as the zone height is not fixed before
-    ofxAVUIVisualWave *visual3 = new ofxAVUIVisualWave();
-    zones[2].addVisual(visual3, ofColor(0,255,255));
+    ofxAVUIVisualCircles *visual3 = new ofxAVUIVisualCircles(10);
+    zones[2].addVisual(visual3, ofColor(0,255,255, 127));
     
     //OF sound start
     ofSoundStreamSetup(2,2,this, sampleRate, bufferSize, 4); /* this has to happen at the end of setup - it switches on the DAC */

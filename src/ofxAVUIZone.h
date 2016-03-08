@@ -21,6 +21,7 @@
 #include "ofxAVUIVisualBase.h"
 #include "ofxAVUIVisualWave.h"
 #include "ofxAVUIVisualBars.h"
+#include "ofxAVUIVisualCircles.h"
 
 #include "ofxAVUIZonePlayer.h"
 #include "ofxAVUISoundFxBase.h"
