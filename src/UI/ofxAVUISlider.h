@@ -16,7 +16,7 @@
 class ofxAVUISlider : public ofxAVUIBase {
 public:
     ofxAVUISlider() {};
-    ofxAVUISlider(string _title, string _paramBool, string _paramFloat);
+    ofxAVUISlider(string _title, string _paramBoolTrigger, string _paramBoolToggle, string _paramFloat);
     virtual ~ofxAVUISlider();
     virtual void setPosition(int _x, int _y, int _width, int _height);   //polymorhing so we can set the starting position for cursor
 
@@ -35,7 +35,8 @@ private:
     long             doubleClickTimer;
     bool             clicking;
     ofMouseEventArgs mouseArgs;
-    string           param1, paramBool;
+    string           param1, paramBoolTrigger, paramBoolToggle;
+
 };
 
 #endif /* ofxAVUISlider_h */

@@ -7,13 +7,14 @@
 
 #include "ofxAVUISlider.h"
 
-ofxAVUISlider::ofxAVUISlider(string _title, string _paramFloat, string _paramBool){
+ofxAVUISlider::ofxAVUISlider(string _title, string _paramFloat, string _paramBoolTrigger, string _paramBoolToggle){
     x = 0;
     dragging = false;
     clicking = false;
     title = _title;
     param1 = _paramFloat;
-    paramBool = _paramBool;
+    paramBoolTrigger = _paramBoolTrigger;
+    paramBoolToggle = _paramBoolToggle;
 }
 
 ofxAVUISlider::~ofxAVUISlider(){
@@ -51,7 +52,7 @@ void ofxAVUISlider::draw(){
     drawContour();
     drawTitle();
     ofDrawLine(x-shape.x, 0, x-shape.x, shape.height);  //cursor
-    if(soundProperties->getBool(paramBool)) ofDrawCircle(x - shape.x, shape.height/2,10);
+    if(soundProperties->getBool(paramBoolToggle)) ofDrawCircle(x - shape.x, shape.height/2,10); //draw toggle
     ofPopStyle();
 }
 
@@ -76,7 +77,7 @@ void ofxAVUISlider::mouseReleased(ofMouseEventArgs & args) {
     if (shape.inside(args.x, args.y)) {
 //        if (ofGetElapsedTimeMillis() - doubleClickTimer <= DOUBLECLICK_MILLIS) {
 //            if (!dragging) soundProperties->getBool(paramBool) = !soundProperties->getBool(paramBool);    //no toggle
-            if (!dragging) soundProperties->getBool(paramBool) = true;                                      //just trigger
+            if (!dragging) soundProperties->getBool(paramBoolTrigger) = true;                               //just send trigger
             x = args.x;
             ofParameter<float>  p1 = soundProperties->getFloat(param1);
             float horizVal = ofMap(args.x, shape.x, shape.x + shape.width, p1.getMin(), p1.getMax());

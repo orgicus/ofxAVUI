@@ -17,7 +17,7 @@
 class ofxAVUIXYPad : public ofxAVUIBase {
 public:
     ofxAVUIXYPad() {};
-    ofxAVUIXYPad(string _title, string _paramBool, string _paramFloat1, string _paramFloat2);
+    ofxAVUIXYPad(string _title, string _paramBool2, string _paramBoolTrigger, string _paramBoolToggle, string _paramFloat2);
     ~ofxAVUIXYPad();
     virtual void setPosition(int _x, int _y, int _width, int _height);   //polymorhing so we can set the starting position for cursor
     
@@ -38,7 +38,7 @@ private:
     long             doubleClickTimer;
     bool             clicking;
     ofMouseEventArgs mouseArgs;
-    string           paramX, paramY, paramBool;
+    string           paramX, paramY, paramBoolTrigger, paramBoolToggle;
 };
 
 #endif /* ofxAVUIXYPad_h */
