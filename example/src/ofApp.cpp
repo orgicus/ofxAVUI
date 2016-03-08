@@ -20,7 +20,7 @@ void ofApp::setup(){
     
     //ofxAVUI setup
     //Zone 0
-    zones[0].setup("zone1", 100, 100, 200, "sound.wav", ofColor(100,100,100, 0), ofColor(0,255,255, 255), bufferSize);
+    zones[0].setup("zone1", 100, 100, 200, "sound.wav", ofColor(100,100,100, 150), ofColor(0,255,255, 255), bufferSize);
     ofxAVUIXYPad *pad1 = new ofxAVUIXYPad("Pad", "triggerPlay", "volume", "pitch");
     zones[0].addUI(pad1, 100);
     ofxAVUIToggle *toggle1 = new ofxAVUIToggle("Looping", "toggleLooping");
@@ -33,7 +33,7 @@ void ofApp::setup(){
     zones[0].addVisual(visual1, ofColor(0,0,255));
 
     //Zone 1
-    zones[1].setup("zone2", 300, 100, 200, "Low.wav", ofColor(100,100,100, 0), ofColor(255,255,0, 255), bufferSize);
+    zones[1].setup("zone2", 300, 100, 200, "Low.wav", ofColor(100,100,100, 150), ofColor(255,255,0, 255), bufferSize);
     ofxAVUIXYPad *pad2 = new ofxAVUIXYPad("Pad", "triggerPlay", "pitch", "volume");
     zones[1].addUI(pad2, 100);
     ofxAVUIEmpty *empty1 = new ofxAVUIEmpty("Empty");
@@ -46,7 +46,7 @@ void ofApp::setup(){
     zones[1].addVisual(visual2, ofColor(255,0,255));
 
     //Zone 2
-    zones[2].setup("zone3", 500, 100, 200, "synth.wav", ofColor(100,100,100, 0), ofColor(255,0,255, 255), bufferSize);
+    zones[2].setup("zone3", 500, 100, 200, "synth.wav", ofColor(100,100,100, 150), ofColor(255,0,255, 255), bufferSize);
     ofxAVUIXYPad *pad3 = new ofxAVUIXYPad("Pad", "triggerPlay", "pitch", "volume");
     zones[2].addUI(pad3, 100);
     
@@ -66,7 +66,7 @@ void ofApp::setup(){
     
     //always put visual last as the zone height is not fixed before
     ofxAVUIVisualCircles *visual3 = new ofxAVUIVisualCircles(10);
-    zones[2].addVisual(visual3, ofColor(0,255,255, 127));
+    zones[2].addVisual(visual3, ofColor(0,255,0, 196));
 
     //OF sound start
     ofSoundStreamSetup(2,2,this, sampleRate, bufferSize, 4); /* this has to happen at the end of setup - it switches on the DAC */
@@ -75,20 +75,25 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    for (int k=0; k<3; k++) {
-        zones[k].update();
-    }
+
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    
+
+    //get individual parameters and use them outside of the zone, together with their min/max limits
+    ofParameter<float> x = zones[0].getParamValueFloat("volume");
+    int coordX = ofMap(x, x.getMin(), x.getMax(), 0, ofGetWidth());
+    ofParameter<float> y = zones[0].getParamValueFloat("pitch");
+    int coordY = ofMap(y, y.getMin(), y.getMax(), 0, ofGetHeight());
+    ofDrawLine(coordX, 0, coordX, ofGetHeight());
+    ofDrawLine(0, coordY, ofGetWidth(), coordY);
+
+    //draw all the zones
     for (int k=0; k<3; k++) {
         zones[k].draw();
     }
     
-    /* You can use any of the data from audio received and audiorequested to draw stuff here. */
-
 }
 
 //--------------------------------------------------------------

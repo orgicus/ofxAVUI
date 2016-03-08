@@ -60,6 +60,8 @@ public:
     void addSoundFx(ofxAVUISoundFxBase * _fxElement);
     void addVisual(ofxAVUIVisualBase * _element, ofColor visColor);
     void syncParameters();    //sync UI with parameters
+    ofParameter<float> getParamValueFloat(string _param);
+    ofParameter<bool> getParamValueBool(string _param);
 
 private:
     bool                loaded;     //zone and sound initialised
@@ -78,10 +80,8 @@ private:
     ofParameter<bool>   toggle;
     ofParameter<float>  frequency;
     ofParameter<float>  resonance;
-//    ofParameter<bool>   filterOn;
     ofParameter<float>  size;
     ofParameter<float>  feedback;
-//    ofParameter<bool>   delayOn;
     ofParameterGroup    soundProperties;
     
     std::vector <ofxAVUIBase *> uis;

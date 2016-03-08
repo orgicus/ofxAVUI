@@ -41,7 +41,7 @@ void ofxAVUIZonePlayer::stop(){
     stopping = true;
 }
 
-double ofxAVUIZonePlayer::play(int pos, double pan){
+void ofxAVUIZonePlayer::play(int pos, double pan){
     if (playing) {
         if (looping) {
             sampleOut=envelope.ar(sound.play(speed), 0.1, (stopping?0.9999:1), 1, sampleTrigger);
@@ -58,6 +58,5 @@ double ofxAVUIZonePlayer::play(int pos, double pan){
     buffer[pos]=sampleOut;
     bus.stereo(sampleOut*amplitude, outputs, pan);
     sampleTrigger = 0;
-    return sampleOut*amplitude; //used for visualisation
 }
 

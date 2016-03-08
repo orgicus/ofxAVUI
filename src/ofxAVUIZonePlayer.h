@@ -11,8 +11,8 @@
 #include "ofMain.h"
 #include "ofxMaxim.h"
 #include "ofxAVUISoundFxBase.h"
-#include "ofxAVUISoundFxFilter.h"
-#include "ofxAVUISoundFxDelay.h"
+//#include "ofxAVUISoundFxFilter.h"
+//#include "ofxAVUISoundFxDelay.h"
 
 class ofxAVUIZonePlayer {
     
@@ -24,7 +24,7 @@ class ofxAVUIZonePlayer {
         void stop();
         void filter(float _val1, float _val2);
         void delay(float _val1, float _val2);
-        double play(int pos, double pan);
+        void play(int pos, double pan);
 
         void addSoundFx(ofxAVUISoundFxBase * _fxElement);
         void sendValue(string _param, float _val);

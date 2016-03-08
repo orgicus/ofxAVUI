@@ -33,7 +33,6 @@ ofxAVUIZone* ofxAVUIZone::setup(string _name, int _x, int _y, int _width, string
     player.setup(ofToDataPath(_sound), _bufferSize);
     
     soundProperties.add(devNull.set("null", 1.0, 0.0, 2.0));
-//    devNull.addListener(this,&ofxAVUIZone::nullChanged);
 
     soundProperties.add(pitch.set("pitch", player.speed, 0.0, 2.0));
     pitch.addListener(this,&ofxAVUIZone::pitchChanged);
@@ -114,15 +113,20 @@ void ofxAVUIZone::syncParameters() {
     }
 
     FBO.allocate(shape.width, shape.height, GL_RGBA);    //doing this here so we do it just once
-//    FBO.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);    //doing this here so we do it just once
 
     synced = true;
 }
 
+ofParameter<float> ofxAVUIZone::getParamValueFloat(string _param) {
+    return soundProperties.getFloat(_param);
+}
+
+ofParameter<bool> ofxAVUIZone::getParamValueBool(string _param) {
+    return soundProperties.getBool(_param);
+}
+
 void ofxAVUIZone::play(int pos) {
-    if (loaded) {
-        double sample = player.play(pos, 0.5);
-    }
+    if (loaded) player.play(pos, 0.5);
 }
 
 double ofxAVUIZone::getOutput(int channel) {
