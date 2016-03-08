@@ -20,6 +20,7 @@
 
 #include "ofxAVUIVisualBase.h"
 #include "ofxAVUIVisualWave.h"
+#include "ofxAVUIVisualBars.h"
 
 #include "ofxAVUIZonePlayer.h"
 #include "ofxAVUISoundFxBase.h"
