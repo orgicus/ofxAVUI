@@ -1,8 +1,8 @@
 //
 //  ofxAVUIZone.h
 //
-//  Created by Borut Kumperscak on 29/02/2016.
-//
+//  Part of ofxAVUI addon. Developed by Nuno Correia and Borut Kumpersck in 2016.
+//  https://github.com/AVUIs/ofxAVUI
 //
 
 #ifndef ofxAVUIZone_h

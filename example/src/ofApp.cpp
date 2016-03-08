@@ -1,3 +1,8 @@
+//
+//  Part of ofxAVUI addon. Developed by Nuno Correia and Borut Kumperscak in 2016.
+//  https://github.com/AVUIs/ofxAVUI
+//
+
 #include "ofApp.h"
 
 
