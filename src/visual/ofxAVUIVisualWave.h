@@ -19,7 +19,6 @@ public:
     void draw(float *buffer, float amplitude);
     
 private:
-    int  red;
 
 };
 

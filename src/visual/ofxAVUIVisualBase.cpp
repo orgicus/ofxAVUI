@@ -14,8 +14,9 @@ ofxAVUIVisualBase::ofxAVUIVisualBase(){
     shape.height = 0;
 }
 
-void ofxAVUIVisualBase::setup(int _bufferSize) {
+void ofxAVUIVisualBase::setup(int _bufferSize, ofColor _visColor) {
     myBufferSize = _bufferSize;
+    visColor = _visColor;
 }
 
 void ofxAVUIVisualBase::setPosition(int _x, int _y, int _width, int _height) {

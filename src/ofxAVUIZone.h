@@ -57,7 +57,7 @@ public:
     //UI
     void addUI(ofxAVUIBase * _element, float _pixelHeight);             //UI elements are stacked top->down
     void addSoundFx(ofxAVUISoundFxBase * _fxElement);
-    void addVisual(ofxAVUIVisualBase * _element);
+    void addVisual(ofxAVUIVisualBase * _element, ofColor visColor);
 
 private:
     bool                loaded;

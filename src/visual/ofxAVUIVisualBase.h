@@ -15,7 +15,7 @@ class ofxAVUIVisualBase {
 
 public:
     ofxAVUIVisualBase();
-    void setup(int _bufferSize);
+    void setup(int _bufferSize, ofColor _visColor);
     void setPosition(int _x, int _y, int _width, int _height);
     
     virtual void draw(float *buffer, float amplitude) = 0;                   //every child needs to implement this
@@ -23,6 +23,7 @@ public:
 protected:
     ofRectangle     shape;
     int             myBufferSize;
+    ofColor visColor;
 };
 
 
