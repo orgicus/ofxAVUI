@@ -15,8 +15,9 @@ The example code is thoroughly commented, exemplifying the use of the different 
 
 # Dependencies
 
-ofxAVUI relies on Maximilian for audio.
-Link: https://github.com/micknoise/Maximilian/tree/master/openFrameworks
+ofxAVUI relies on Maximilian for audio. Therefore, it needs to be included as an add-on, together with ofxAVUI.
+
+Maximilian for openFrameworks: https://github.com/micknoise/Maximilian/tree/master/openFrameworks
 
 # Acknowledgements
 
