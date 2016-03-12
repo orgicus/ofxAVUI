@@ -20,7 +20,7 @@ void ofApp::setup(){
     ofxMaxiSettings::setup(sampleRate, 2, bufferSize);
     
     ofColor bg(100,100,100,150);
-    ofColor fg(0,255,255,255);
+    ofColor fg(255);
     
     //sequencing
     now = ofGetElapsedTimeMillis();
@@ -28,16 +28,15 @@ void ofApp::setup(){
     numSequencerSteps = 16;
     
     //UI positions and dimensions
-    padBounds.x = 50;
+    padBounds.x = 150;
     padBounds.y = 50;
-    padBounds.width = 500;
-    padBounds.height = 500;
+    padBounds.width = padBounds.height = 625;
     
-    sequencerX = padBounds.x+padBounds.width+5;
+    sequencerX = padBounds.x+padBounds.width+25;
     sequencerY = padBounds.y;
-    sequencerW = 195;
+    sequencerW = 330;
     sequencerToggleH = 100;
-    sequencerStepH = 20;
+    sequencerStepH = 25;
     
     //parameter names
     xParamName = "x";
@@ -78,6 +77,7 @@ void ofApp::setup(){
     //slider parameters: caption, trigger (single tap) parameter name, toggle (double tap) parameter name, x parameter name
     zoneSequencer.addUI(new ofxAVUISlider(timerParamName,"","",timerParamName), sequencerStepH);
     zoneSequencer.addUI(new ofxAVUISlider(filterSpeedParamName,"","",filterSpeedParamName), sequencerStepH);
+    zoneSequencer.addUI(new ofxAVUIEmpty(""), sequencerStepH);
     zoneSequencer.addUI(new ofxAVUIButton(resetParamName,resetParamName),sequencerStepH);
     //sound FX
     ofxAVUISoundFxFilter *sfx = new ofxAVUISoundFxFilter();
@@ -110,6 +110,7 @@ void ofApp::update(){
     //gesture traversal
     gestureTraversal += zoneSequencer.getParamValueFloat(filterSpeedParamName);
     if(gestureTraversal > 1.0) gestureTraversal = 0.0;
+    //ofPolyline deals with getting the interpolated position, nice!
     gestureCurrentPoint = gesture.getPointAtIndexInterpolated(gestureTraversal * gesture.size());
     //map to filter
     if(gesture.size() > 0){
@@ -123,6 +124,9 @@ void ofApp::update(){
         
         zoneSequencer.getParamValueFloat("frequency") = frequency;
         zoneSequencer.getParamValueFloat("resonance") = resonance;
+    }else{
+        //draw circle offscreen
+        gestureCurrentPoint.set(-100, -100);
     }
 }
 
@@ -188,11 +192,11 @@ void ofApp::mouseMoved(int x, int y){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
+    //ofRectangle can check if a point is inside, how nice is that ?
     if(padBounds.inside(x, y)){
-        cout << zonePad.getParamValueFloat(xParamName) << "," << zonePad.getParamValueFloat(yParamName) << endl;
+        //polyline handles vertices internally for us
         gesture.addVertex(x, y);
     }
-//    cout << zoneSequencer.getParamValueFloat("timer") << endl;
     delay = (int)zoneSequencer.getParamValueFloat(timerParamName);
 }
 
@@ -205,7 +209,8 @@ void ofApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-    if((x >= 550 && x<= 750) && (y>= 530 && y <= 550)){
+    //hacky bounds check for reset button
+    if((x >= 800 && x<= 800+sequencerW) && (y>=650 && y <= 650+sequencerStepH)){
         cout << zoneSequencer.getParamValueBool(resetParamName) << endl;
         gesture.clear();
     }
