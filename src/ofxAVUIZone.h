@@ -58,9 +58,20 @@ public:
     void addUI(ofxAVUIBase * _element, float _pixelHeight); //UI elements are stacked top->down
     void addSoundFx(ofxAVUISoundFxBase * _fxElement);
     void addVisual(ofxAVUIVisualBase * _element, ofColor visColor);
+    void addParameterFloat(string _paramName, float _min, float _max, float _value);
+    void addParameterBool(string _paramName, bool _val);
     void syncParameters();    //sync UI with parameters
     ofParameter<float> getParamValueFloat(string _param);
     ofParameter<bool> getParamValueBool(string _param);
+    
+    static const string DEV_NULL;
+    static const string VOLUME;
+    static const string PITCH;
+    static const string TOGGLE_LOOPING;
+    static const string TRIGGER_LOOPING;
+    static const string TOGGLE_PLAY;
+    static const string TRIGGER_PLAY;
+    
 
 private:
     bool                loaded;     //zone and sound initialised
