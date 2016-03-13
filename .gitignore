@@ -16,3 +16,26 @@ example/bin/ofxAVUIExampleDebug.app/Contents/MacOS/ofxAVUIExampleDebug
 example/bin/ofxAVUIExampleDebug.app/Contents/MacOS/ofxAVUIExampleDebug
 
 example/bin/ofxAVUIExampleDebug.app/Contents/MacOS/ofxAVUIExampleDebug
+
+# snatched from https://github.com/jvcleave/ofxImGui/blob/master/.gitignore
+# OSX
+.DS_Store
+*.swp
+*~.nib
+# Thumbnails
+._*
+
+# XCode
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.mode1v3
+*.mode2v3
+# XCode 4
+xcuserdata
+*.xcworkspace
+
+*.xcodeproj
+example*/bin/data
+example*/bin/libs/
+example*/bin/*

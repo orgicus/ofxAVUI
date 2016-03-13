@@ -44,12 +44,12 @@ void ofApp::setup(){
     timerParamName = "timer";
     playbackParamName = "playback";
     filterSpeedParamName = "filter speed";
-    resetParamName = "reset playback gesture";
+    resetParamName = "reset gesture";
     
     //ZONE SETUP
     //parameters: name, x, y, width, background color, foreground color, sound filename, sound buffer size
     //PAD
-    zonePad.setup("padZone", padBounds.x, padBounds.y, padBounds.width, bg,fg, "synth.wav", bufferSize);
+    zonePad.setup("padZone", padBounds.x, padBounds.y, padBounds.width, bg,fg, "kick.wav", bufferSize);
     zonePad.addParameterFloat(xParamName, 0.0, 1.0, 0.5);
     zonePad.addParameterFloat(yParamName, 0.0, 1.0, 0.5);
     zonePad.addUI(new ofxAVUIXYPad("Pad", "","", xParamName,yParamName), padBounds.height);
@@ -85,8 +85,10 @@ void ofApp::setup(){
     //- filter enabled toggle name (will be linked to any toggle UI with same name), start value
     //- 1st parameter float name (will be linked to any toggle UI with same name), min value, max value, start value
     //- 2nd parameter float name (will be linked to any toggle UI with same name), min value, max value, start value
-    sfx->setup("filterToggle", true, "frequency", 200, 20000, 200, "resonance", 0, 100, 10);
+    sfx->setup("filterToggle", true, "frequency", 200, 15000, 200, "resonance", 1, 100, 10);
     zoneSequencer.addSoundFx(sfx);
+    //visual
+    zoneSequencer.addVisual(new ofxAVUIVisualBars(numSequencerSteps), ofColor(255, 127));
     //START SOUND
     ofSoundStreamSetup(2,2,this, sampleRate, bufferSize, 4); /* this has to happen at the end of setup*/
     
@@ -111,9 +113,10 @@ void ofApp::update(){
     gestureTraversal += zoneSequencer.getParamValueFloat(filterSpeedParamName);
     if(gestureTraversal > 1.0) gestureTraversal = 0.0;
     //ofPolyline deals with getting the interpolated position, nice!
-    gestureCurrentPoint = gesture.getPointAtIndexInterpolated(gestureTraversal * gesture.size());
+    gestureCurrentPoint = gesture.getPointAtPercent(gestureTraversal);
+    gestureSize = gesture.size();
     //map to filter
-    if(gesture.size() > 0){
+    if(gestureSize > 0){
         ofParameter<float> frequencyParam = zoneSequencer.getParamValueFloat("frequency");
         ofParameter<float> resonanceParam = zoneSequencer.getParamValueFloat("resonance");
         
@@ -121,7 +124,8 @@ void ofApp::update(){
                                 frequencyParam.getMin(), frequencyParam.getMax());
         float resonance = ofMap(gestureCurrentPoint.y, padBounds.y, padBounds.y+padBounds.height,
                                 resonanceParam.getMin(), resonanceParam.getMax());
-        
+        cout << "frequency: " << frequency << endl;
+        cout << "resonance: " << resonance << endl;
         zoneSequencer.getParamValueFloat("frequency") = frequency;
         zoneSequencer.getParamValueFloat("resonance") = resonance;
     }else{
@@ -138,9 +142,14 @@ void ofApp::draw(){
     
     //isolate drawing styles
     ofPushStyle();
-        ofSetColor(255, 32);
+        ofSetColor(255, 16);
         //draw pad gesture
         gesture.draw();
+        vector<ofPoint> vertices = gesture.getVertices();
+        for(int i = 0 ; i < gestureSize; i++)
+            ofDrawCircle(vertices[i], ofMap(i,0,gestureSize-1,5,25));
+    
+        ofSetColor(255, 32);
         ofDrawCircle(gestureCurrentPoint, 30);
     
         //sequncer step preview

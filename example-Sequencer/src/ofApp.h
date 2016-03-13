@@ -46,6 +46,7 @@ class ofApp : public ofBaseApp{
     ofPolyline gesture;
     ofPoint gestureCurrentPoint;
     float gestureTraversal;
+    int gestureSize;
     
     //sequencer
     int now,delay;
